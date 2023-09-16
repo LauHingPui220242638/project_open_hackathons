@@ -9,7 +9,7 @@ os.environ["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"] = getpass.getp
 
 # Initialize the OpenAI language model
 # Replace <your_api_key> in openai_api_key="<your_api_key>" with your actual OpenAI key.
-llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-0613")
+llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-0613") 
 
 # Initialize the SerpAPIWrapper for search functionality
 # Replace <your_api_key> in serpapi_api_key="<your_api_key>" with your actual SerpAPI key.
