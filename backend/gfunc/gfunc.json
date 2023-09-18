@@ -1,0 +1,43 @@
+{
+  "buildConfig": {
+    "build": "projects/568267399820/locations/us-central1/builds/d6f445ac-1b15-4c3a-8045-cf460054f181",
+    "dockerRegistry": "ARTIFACT_REGISTRY",
+    "entryPoint": "hello_http",
+    "runtime": "python311",
+    "source": {
+      "storageSource": {
+        "bucket": "gcf-v2-sources-568267399820-us-central1",
+        "generation": "1695018456076751",
+        "object": "askchatbot/function-source.zip"
+      }
+    },
+    "sourceProvenance": {
+      "resolvedStorageSource": {
+        "bucket": "gcf-v2-sources-568267399820-us-central1",
+        "generation": "1695018456076751",
+        "object": "askchatbot/function-source.zip"
+      }
+    }
+  },
+  "environment": "GEN_2",
+  "labels": {
+    "deployment-tool": "console-cloud"
+  },
+  "name": "projects/fyp-open-data-hackathon/locations/us-central1/functions/askchatbot",
+  "serviceConfig": {
+    "allTrafficOnLatestRevision": true,
+    "availableCpu": "83m",
+    "availableMemory": "256Mi",
+    "ingressSettings": "ALLOW_ALL",
+    "maxInstanceCount": 10,
+    "maxInstanceRequestConcurrency": 1,
+    "revision": "askchatbot-00003-bof",
+    "service": "projects/fyp-open-data-hackathon/locations/us-central1/services/askchatbot",
+    "serviceAccountEmail": "sa-function-general@fyp-open-data-hackathon.iam.gserviceaccount.com",
+    "timeoutSeconds": 60,
+    "uri": "https://askchatbot-qskzidtbhq-uc.a.run.app"
+  },
+  "state": "ACTIVE",
+  "updateTime": "2023-09-18T06:28:29.624863678Z",
+  "url": "https://us-central1-fyp-open-data-hackathon.cloudfunctions.net/askchatbot"
+}

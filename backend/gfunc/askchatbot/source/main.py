@@ -15,4 +15,4 @@ def hello_http(request):
     request_args = request.args
 
     name = request_args.get('ask')
-    return 'Hello {}!'.format(name)
+    return 'Hello {}! Bye!!'.format(name)
