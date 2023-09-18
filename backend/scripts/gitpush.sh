@@ -1,5 +1,6 @@
 #!/bin/bash
 m="$1"
-git push
+git fetch
 git add -A
 git commit -m "$m"
+git push

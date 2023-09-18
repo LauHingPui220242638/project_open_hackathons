@@ -1,3 +1,5 @@
 {
-   "postStartCommand": " "
+   "remoteEnv": {
+      "PATH": "${containerEnv:PATH}:${containerWorkspaceFolder}/cicd"
+   }
 }
