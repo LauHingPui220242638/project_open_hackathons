@@ -10,6 +10,7 @@ func GitPush(args []string)  {
 		fmt.Println(err.Error())
 		return
 	}
+	
 	frames := []string{
 		"fetch",
 		"add -A",
