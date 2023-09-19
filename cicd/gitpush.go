@@ -14,7 +14,7 @@ func GitPush(args []string)  {
 	frames := []string{
 		"fetch",
 		"add -A",
-		"commit -m" + args[0],
+		"commit -m" + args[2],
 		"push"}
 	
 	for _, frame := range frames {
