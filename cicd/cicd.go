@@ -19,8 +19,11 @@ func main(){
 	switch app {
 	case "gitpush":
 		GitPush(args)
+	case "gfunc":
+		GFunc(args)
 	default:
-		fmt.Print(app)		
+		err := CheckEnd(args)
+		fmt.Println(err.Error())		
 	}
     
 
