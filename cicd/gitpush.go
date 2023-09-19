@@ -18,15 +18,7 @@ func GitPush(args []string)  {
 		[]string{"git","push"},
 	}
 	
-	for _, frame := range frames {
-		
-		_, err := ExecCmd(frame[0], frame[1])
-		if err != nil {
-			fmt.Println(err.Error())
-			return
-		}	
-		
-	}
+	ExecCmdMulti(frames)
 	
 	
 	
