@@ -11,15 +11,16 @@ func GitPush(args []string)  {
 		return
 	}
 	
-	frames := []string{
-		"fetch",
-		"add -A",
-		"commit -m" + args[2],
-		"push"}
+	frames := [][]string{
+		[]string{"git","fetch"},
+		[]string{"git","add -A"},
+		[]string{"git","commit -m" + args[2]},
+		[]string{"git","push"},
+	}
 	
 	for _, frame := range frames {
 		
-		_, err := ExecCmd("git", frame)
+		_, err := ExecCmd(frame[0], frame[1])
 		if err != nil {
 			fmt.Println(err.Error())
 			return
