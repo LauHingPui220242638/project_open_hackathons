@@ -18,7 +18,7 @@ func Git(args []string)  {
 	 
 	switch cmd {
 	case "push":
-		deploy()
+		GitPush(args)
 	case "m2b":
 		deploy()
 	case "b2m":
@@ -27,20 +27,13 @@ func Git(args []string)  {
 		err := CheckEnd(cmd,`
 		please enter:
 			cicd git push <message>
-			cicd git m2b <message>
-			cicd git b2m <message>
+			cicd git m2b <branch>
+			cicd git b2m <branch>
 				`)
 		fmt.Println(err.Error())	
 	}
 	
-	frames := [][]string{
-		[]string{"git","fetch"},
-		[]string{"git","add -A"},
-		[]string{"git","commit -m" + args[2]},
-		[]string{"git","push"},
-	}
 	
-	ExecCmdMulti(frames)
 	
 	
 	
