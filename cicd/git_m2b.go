@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 func GitM2B(args []string)  {
 
@@ -8,6 +11,10 @@ func GitM2B(args []string)  {
 	cicd_activebranch, err := ExecCmd("git","rev-parse --abbrev-ref HEAD")
 	if err != nil {
 		fmt.Println(err.Error())
+		return
+	}
+	if cicd_activebranch == "main"{
+		fmt.Println(errors.New("branch cannot be main"))
 		return
 	}
 	frames := [][]string{
