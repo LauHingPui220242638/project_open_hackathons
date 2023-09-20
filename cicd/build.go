@@ -20,6 +20,6 @@ func Build(args []string) {
 
 	ExecCmdMulti(frames)
 	
-	fmt.Println("cicd is sucessfully built")
+	fmt.Println("cicd is sucessfully built!!")
 
 }
