@@ -8,12 +8,13 @@ import (
 func main() {
 	Greeting()
 	args := os.Args
-	err := CheckNum(args, 2,
-		`
-		please enter:
-			cicd git <command>
-			cicd gfunc <command>
-		`)
+	prompt := `
+	please enter:
+		cicd git <command>
+		cicd gfunc <command>
+		cicd build
+	`
+	err := CheckNum(args, 2, prompt)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
@@ -26,12 +27,10 @@ func main() {
 		Git(args)
 	case "gfunc":
 		GFunc(args)
+	case "build":
+		Build(args)
 	default:
-		err := CheckEnd(cmd, `
-		please enter:
-			cicd git <command>
-			cicd gfunc <command>
-				`)
+		err := CheckEnd(cmd, prompt)
 		fmt.Println(err.Error())
 	}
 

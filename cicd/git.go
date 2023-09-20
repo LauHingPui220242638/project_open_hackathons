@@ -5,12 +5,13 @@ import (
 )
 
 func Git(args []string)  {
-	err := CheckNum(args, 3, `
+	prompt := `
 	please enter:
 			cicd git push <message>
 			cicd git m2b <branch>
 			cicd git b2m <branch>
-			`)
+			`
+	err := CheckNum(args, 3, prompt)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
@@ -26,12 +27,7 @@ func Git(args []string)  {
 	case "b2m":
 		deploy()
 	default:
-		err := CheckEnd(cmd,`
-		please enter:
-			cicd git push <message>
-			cicd git m2b <branch>
-			cicd git b2m <branch>
-				`)
+		err := CheckEnd(cmd, prompt)
 		fmt.Println(err.Error())	
 	}
 	
