@@ -3,18 +3,20 @@ package main
 import (
 	"errors"
 	"fmt"
+	"strings"
 )
 
 func GitM2B(args []string)  {
 
-	
+	fmt.Println("the active branch:")
 	cicd_activebranch, err := ExecCmd("git","rev-parse --abbrev-ref HEAD")
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
-	if fmt.Sprintf("%q", cicd_activebranch)  == "main" {
-		fmt.Println(errors.New("branch cannot be main" + cicd_activebranch + ".."))
+	cicd_activebranch = strings.TrimSuffix(cicd_activebranch, "\n")
+	if cicd_activebranch  == "main" {
+		fmt.Println(errors.New("branch cannot be main"))
 		return
 	}
 	frames := [][]string{
