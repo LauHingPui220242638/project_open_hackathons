@@ -21,7 +21,7 @@ func GitM2B(args []string)  {
 		[]string{"git","add -A"},
 		[]string{"git","commit -m m2b_" + cicd_activebranch},
 		[]string{"git","checkout main"},
-		[]string{"git","checkout" + cicd_activebranch},
+		[]string{"git","checkout " + cicd_activebranch},
 		[]string{"git","merge main"},
 		[]string{"git","checkout " + cicd_activebranch}}
 	
