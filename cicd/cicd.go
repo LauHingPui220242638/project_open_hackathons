@@ -23,8 +23,8 @@ please enter:
 	cmd := args[1]
 
 	switch cmd {
-	case "gitpush":
-		GitPush(args)
+	case "git":
+		Git(args)
 	case "gfunc":
 		GFunc(args)
 	default:

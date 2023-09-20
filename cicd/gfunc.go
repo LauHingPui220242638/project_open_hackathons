@@ -13,7 +13,7 @@ func GFunc(args []string) {
 		fmt.Println(err.Error())
 		return
 	}
-	cmd := args[len(args)-1]
+	cmd := args[2]
 	 
 	switch cmd {
 	case "deploy":
