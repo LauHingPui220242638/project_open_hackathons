@@ -11,7 +11,7 @@ func GitPush(args []string)  {
 		return
 	}
 	
-	message := args[2]
+	message := args[len(args)-1]
 	frames := [][]string{
 		[]string{"git","fetch"},
 		[]string{"git","add -A"},
