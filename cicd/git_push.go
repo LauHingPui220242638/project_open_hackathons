@@ -5,13 +5,13 @@ import (
 )
 
 func GitPush(args []string)  {
-	err := CheckNum(args, 3, "message for commit must be sigle string")
+	err := CheckNum(args, 4, "message for commit must be sigle string")
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
 	
-	message := args[2]
+	message := args[3]
 	frames := [][]string{
 		[]string{"git","fetch"},
 		[]string{"git","add -A"},

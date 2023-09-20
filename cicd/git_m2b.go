@@ -1,26 +1,22 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func GitM2B(args []string)  {
-	err := CheckNum(args, 3, "branch for merge must be sigle string")
+
+	
+	cicd_activebranch, err := ExecCmd("git","rev-parse --abbrev-ref HEAD")
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
-	
-	branch := args[2]
 	frames := [][]string{
 		[]string{"git","add -A"},
-		[]string{"git","commit -m m2b_" + branch},
+		[]string{"git","commit -m m2b_" + cicd_activebranch},
 		[]string{"git","checkout main"},
-		[]string{"git","checkout " + branch},
+		[]string{"git","checkout" + cicd_activebranch},
 		[]string{"git","merge main"},
-		[]string{"git","commit -m"},
-		[]string{"git","push"},
-	}
+		[]string{"git","checkout " + cicd_activebranch}}
 	
 	ExecCmdMulti(frames)
 	

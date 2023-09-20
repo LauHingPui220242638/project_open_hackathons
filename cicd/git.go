@@ -20,7 +20,7 @@ func Git(args []string)  {
 	case "push":
 		GitPush(args)
 	case "m2b":
-		deploy()
+		GitM2B(args)
 	case "b2m":
 		deploy()
 	default:
