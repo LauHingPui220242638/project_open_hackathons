@@ -29,7 +29,7 @@ func main() {
 	default:
 		err := CheckEnd(cmd, `
 		please enter:
-			cicd git <message>
+			cicd git <command>
 			cicd gfunc <command>
 				`)
 		fmt.Println(err.Error())
