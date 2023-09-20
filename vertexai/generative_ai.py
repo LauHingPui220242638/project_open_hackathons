@@ -1,4 +1,5 @@
-import vertexai, streamlit as st
+import vertexai
+import streamlit as st
 import requests, os 
 import pandas as pd
 
@@ -56,17 +57,21 @@ st.title("🌿🌿Green man☘️☘️")
 #st_callback = StreamlitCallbackHandler(st.container())
 
 
+message = st.chat_message("ai")
+message.write('What can I help you?')
+
 
 
 model_selectbox = st.selectbox(
     'Choose a model',
     ('text-bison@001-Vertex AI', 'text-bison@001-Generative AI'))
 
-st.chat_message("ai").write('What can I help you?')
-
 
 if model_selectbox == 'text-bison@001-Vertex AI':
     model_name = "text-bison@001"
+
+    message = st.chat_message("ai")
+    message.write('What can I help you?')
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
