@@ -13,7 +13,7 @@ func GitM2B(args []string)  {
 		fmt.Println(err.Error())
 		return
 	}
-	if cicd_activebranch == "main"{
+	if string(cicd_activebranch) == "main"{
 		fmt.Println(errors.New("branch cannot be main"))
 		return
 	}
