@@ -1,35 +1,39 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
 )
 
-func main(){
+func main() {
 	Greeting()
 	args := os.Args
-	err := CheckApp(args)
-	if err != nil {
+	if len(args) < 2 {
+		err := errors.New(
+			`
+please enter:
+	cicd gitpush <message>
+	cicd gfunc <command>
+`)
 		fmt.Println(err.Error())
-		return 
+		return
 	}
-	
-	app := args[1]
-	
-	switch app {
+
+	cmd := args[1]
+
+	switch cmd {
 	case "gitpush":
 		GitPush(args)
 	case "gfunc":
 		GFunc(args)
 	default:
-		err := CheckEnd(args)
-		fmt.Println(err.Error())		
+		err := CheckEnd(cmd, `
+		please enter:
+			cicd gitpush <message>
+			cicd gfunc <command>
+				`)
+		fmt.Println(err.Error())
 	}
-    
-
-    
 
 }
-
-
-

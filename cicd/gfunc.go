@@ -5,7 +5,7 @@ import (
 )
 
 func GFunc(args []string) {
-	err := CheckThree(args, `
+	err := CheckNum(args, 3, `
 	please enter:
 		cicd gfunc <command>
 			`)
@@ -13,13 +13,18 @@ func GFunc(args []string) {
 		fmt.Println(err.Error())
 		return
 	}
-
-	// switch cmd {
-	// case "deploy":
-	// 	deploy()
-	// default:
-	// 	return
-	// }
+	cmd := args[len(args)-1]
+	 
+	switch cmd {
+	case "deploy":
+		deploy()
+	default:
+		err := CheckEnd(cmd,`
+		please enter:
+			cicd gfunc deploy <command>
+				`)
+		fmt.Println(err.Error())	
+	}
 
 }
 

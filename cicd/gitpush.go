@@ -5,7 +5,7 @@ import (
 )
 
 func GitPush(args []string)  {
-	err := CheckThree(args, "message for commit must be sigle string")
+	err := CheckNum(args, 3, "message for commit must be sigle string")
 	if err != nil {
 		fmt.Println(err.Error())
 		return
