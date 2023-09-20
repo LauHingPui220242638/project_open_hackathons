@@ -14,8 +14,10 @@ from langchain.memory import ConversationBufferMemory
 from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
 
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/workspaces/project/fyp-open-data-hackathon-7fccdf48c91c.json"
-credential_path = "/workspaces/project/fyp-open-data-hackathon-7fccdf48c91c.json"
+credential = "fyp-open-data-hackathon-7fccdf48c91c.json"
+
+credential_path = os.path.join(os.getcwd(), credential)
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credential_path
 
 
 PROJECT_ID = 'fyp-open-data-hackathon'
@@ -57,8 +59,7 @@ st.title("🌿🌿Green man☘️☘️")
 #st_callback = StreamlitCallbackHandler(st.container())
 
 
-message = st.chat_message("ai")
-message.write('What can I help you?')
+st.chat_message("ai").write('What can I help you?')
 
 
 
@@ -70,8 +71,6 @@ model_selectbox = st.selectbox(
 if model_selectbox == 'text-bison@001-Vertex AI':
     model_name = "text-bison@001"
 
-    message = st.chat_message("ai")
-    message.write('What can I help you?')
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
