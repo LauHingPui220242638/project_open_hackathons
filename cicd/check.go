@@ -5,7 +5,7 @@ import (
 )
 
 func CheckNum(args []string, num int, prompt string) error {
-	if len(args) != num {
+	if num > len(args)  {
 		return errors.New(prompt)
 
 	}

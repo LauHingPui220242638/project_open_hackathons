@@ -5,7 +5,7 @@ import (
 )
 
 func GitM2B(args []string)  {
-	err := CheckNum(args, 3, "branch for merge must be sigle string")
+	err := CheckNum(args, 4, "branch for merge must be sigle string")
 	if err != nil {
 		fmt.Println(err.Error())
 		return
@@ -13,14 +13,13 @@ func GitM2B(args []string)  {
 	
 	branch := args[2]
 	frames := [][]string{
+		[]string{"","cicd_activebranch=$(git rev-parse --abbrev-ref HEAD)"},
 		[]string{"git","add -A"},
 		[]string{"git","commit -m m2b_" + branch},
 		[]string{"git","checkout main"},
 		[]string{"git","checkout " + branch},
 		[]string{"git","merge main"},
-		[]string{"git","commit -m"},
-		[]string{"git","push"},
-	}
+		[]string{"git","checkout $cicd_activebranch"}}
 	
 	ExecCmdMulti(frames)
 	

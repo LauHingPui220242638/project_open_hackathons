@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"os"
 )
@@ -9,13 +8,13 @@ import (
 func main() {
 	Greeting()
 	args := os.Args
-	if len(args) < 2 {
-		err := errors.New(
-			`
-please enter:
-	cicd gitpush <message>
-	cicd gfunc <command>
-`)
+	err := CheckNum(args, 2,
+		`
+		please enter:
+			cicd git <command>
+			cicd gfunc <command>
+		`)
+	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
@@ -30,7 +29,7 @@ please enter:
 	default:
 		err := CheckEnd(cmd, `
 		please enter:
-			cicd gitpush <message>
+			cicd git <message>
 			cicd gfunc <command>
 				`)
 		fmt.Println(err.Error())
