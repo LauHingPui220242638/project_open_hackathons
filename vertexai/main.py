@@ -13,6 +13,8 @@ from langchain.memory import ConversationBufferMemory
 from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
 from langchain.tools import BaseTool, Tool
 from langchain.utilities import SerpAPIWrapper
+from io import BytesIO
+from gtts import gTTS
 
 credential = "fyp-open-data-hackathon-7fccdf48c91c.json"
 credential_path = os.path.dirname(os.getcwd()) +  "/secretes/" + credential
@@ -28,6 +30,7 @@ vertexai.init(project=PROJECT_ID, location=LOCATION)
 st.title("🌿🌿Green man☘️☘️")
 
 st.chat_message("ai").write('What can I help you?')
+
 
 model_selectbox = st.selectbox(
     'Choose a model',
@@ -66,7 +69,7 @@ def message_session():
             st.markdown(message["content"])
     return message_session
 
-def tool1():
+#def tool1():
         
     tools = [
         Tool(
@@ -130,22 +133,39 @@ def tool1():
 
 
 def vertexai_function():
-    tool1()
 
     if prompt := st.chat_input("Talk to Vertex AI on Green man"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").markdown(prompt)
-        vertexai_function()
-        memory = ConversationBufferMemory (memory_key="chat history")
-        tools = [search()]
+        sound = BytesIO()
+        #memory = ConversationBufferMemory (memory_key="chat history")
+        #tools = [search()]
         llm_chain = LLM_init()
-        react = initialize_agent(tools, vertex_ai_model, data_file, agent_type=AgentType .ZERO_SHOT_REACT_DESCRIPTION, memory=memory, verbose=True) 
-        response = react.run(prompt)
+        #react = initialize_agent(tools, vertex_ai_model, data_file, agent_type=AgentType .ZERO_SHOT_REACT_DESCRIPTION, memory=memory, verbose=True) 
+        read = "https://www.wastereduction.gov.hk/sites/default/files/wasteless07.csv"
+        #"https://www.epd.gov.hk/epd/sites/default/files/epd/english/environmentinhk/waste/data/files/solid-waste-disposal-quantity-by-category-en-2021.csv"
+        data_file = pd.read_csv(read)
+        vertex_ai_model = VertexAI(
+            model_name=model_name,
+            max_output_tokens=256,
+            temperature=0.2,
+            top_p=0.8,
+            top_k=40
+        )
+        agent = create_pandas_dataframe_agent(vertex_ai_model, data_file, verbose=True)
+        response = agent.run(prompt)
         with st.chat_message("assistant"):
-            st.markdown(response)    
+            st.markdown(response)
         st.session_state.messages.append({"role": "ai", "content": response})
+        tts = gTTS(response, lang='en', tld='com')
+        tts.write_to_fp(sound)
+        st.audio(sound)
+
+
         #st_callback = StreamlitCallbackHandler(st.container())
+        
     return vertexai_function
+
 
 def generationai_function():
     if "messages" not in st.session_state:
@@ -159,6 +179,7 @@ def generationai_function():
     if prompt := st.chat_input("Talk to Generative AI on Green man"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").markdown(prompt)
+        sound = BytesIO()
         generation = generation_model.predict(
             prompt=prompt,
             max_output_tokens=256,
@@ -167,7 +188,11 @@ def generationai_function():
         with st.chat_message("assistant"):
             st.markdown(generation)
         st.session_state.messages.append({"role": "ai", "content": generation})
-        
+        tts = gTTS(generation, lang='en', tld='com')
+        tts.write_to_fp(sound)
+        st.audio(sound)
+
+
     return generationai_function
 
 
