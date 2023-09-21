@@ -8,13 +8,32 @@ terraform {
 }
 
 provider "google" {
-  credentials = file("../secretes/fyp-open-data-hackathon-8644213ecdba.json")
+  credentials = file(var.credentials)
 
   project = "fyp-open-data-hackathon"
-  region  = "us-central1"
-  zone    = "us-central1-c"
+  region  = "${var.region}"
+  zone    = "${var.zone}"
 }
 
 resource "google_compute_network" "vpc_network" {
   name = "terraform-network"
+}
+
+
+resource "google_cloud_run_service" "backend" {
+  name     = "backend"
+  location = "${var.region}"
+
+  template {
+    spec {
+      containers {
+        image = "gcr.io/cloudrun/hello"
+      }
+    }
+  }
+
+  traffic {
+    percent         = 100
+    latest_revision = true
+  }
 }
