@@ -5,31 +5,33 @@ import (
 	"os"
 )
 
-func main(){
+func main() {
 	Greeting()
 	args := os.Args
-	err := CheckApp(args)
+	prompt := `
+	please enter:
+		cicd git <command>
+		cicd gfunc <command>
+		cicd build
+	`
+	err := CheckNum(args, 2, prompt)
 	if err != nil {
 		fmt.Println(err.Error())
-		return 
+		return
 	}
-	
-	app := args[1]
-	
-	switch app {
-	case "gitpush":
-		GitPush(args)
+
+	cmd := args[1]
+
+	switch cmd {
+	case "git":
+		Git(args)
 	case "gfunc":
 		GFunc(args)
+	case "build":
+		Build(args)
 	default:
-		err := CheckEnd(args)
-		fmt.Println(err.Error())		
+		err := CheckEnd(cmd, prompt)
+		fmt.Println(err.Error())
 	}
-    
-
-    
 
 }
-
-
-
