@@ -1,6 +1,6 @@
 **/.venv/
 
-**/.terraform*
+.terraform
 *.tfstate
 *.tfstate.*
 crash.log
