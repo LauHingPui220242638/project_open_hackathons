@@ -1,3 +1,4 @@
-**/secretes/
 **/.venv/
+**/.terraform/
+**/secretes/
 **/__pycache__/
