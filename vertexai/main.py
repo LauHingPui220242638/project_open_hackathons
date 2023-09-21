@@ -15,8 +15,7 @@ from langchain.tools import BaseTool, Tool
 from langchain.utilities import SerpAPIWrapper
 
 credential = "fyp-open-data-hackathon-7fccdf48c91c.json"
-
-credential_path = os.path.join(os.getcwd(), credential)
+credential_path = os.path.dirname(os.getcwd()) +  "/secretes/" + credential
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credential_path
 
 
