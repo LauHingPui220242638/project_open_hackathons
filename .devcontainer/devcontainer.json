@@ -1,5 +1,18 @@
 {
    "remoteEnv": {
-      "PATH": "${containerEnv:PATH}:${containerWorkspaceFolder}/cicd"
-   }
+      "PATH": "${containerEnv:PATH}:${containerWorkspaceFolder}/cicd:/workspaces/flutter/bin"
+},
+"customizations": {
+	"vscode": {
+		"extensions": [
+			"golang.go",
+			"hashicorp.terraform",
+			"VisualStudioExptTeam.vscodeintellicode",
+			"ms-python.vscode-pylance",
+			"ms-azuretools.vscode-docker",
+			"Dart-Code.flutter""dart-code.dart-code"
+		]
+	}
+},
+"postCreateCommand": "echo ${containerWorkspaceFolderBasename}"
 }
