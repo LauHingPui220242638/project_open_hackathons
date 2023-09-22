@@ -3,23 +3,19 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/exec"
 	"path/filepath"
 )
 
 func Build(args []string) {
-	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	
+	opath, err := os.Executable()
     if err != nil {
-            fmt.Println(err.Error())
+        panic(err)
     }
-	
-	opath := filepath.Join(dir,"cicd")
-	frames := [][]string{
-		[]string{"rm", opath},
-		[]string{"go", "build -o " + opath + " ."},
-	}
-
-	ExecCmdMulti(frames)
-	
-	fmt.Println("cicd is sucessfully built!!")
+	dirpath := filepath.Dir(opath)
+	cmd := exec.Command("go","build .")
+	cmd.Dir = dirpath
+	fmt.Println("cicd is sucessfully built")
 
 }
