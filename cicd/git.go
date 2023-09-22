@@ -25,7 +25,7 @@ func Git(args []string)  {
 	case "m2b":
 		GitM2B(args)
 	case "b2m":
-		deploy()
+		GitB2M(args)
 	default:
 		err := CheckEnd(cmd, prompt)
 		fmt.Println(err.Error())	
