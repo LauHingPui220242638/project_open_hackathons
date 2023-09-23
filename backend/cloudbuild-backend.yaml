@@ -14,6 +14,8 @@ steps:
 #   args: ['run', 'deploy', 'backend', '--image', 'fyp-open-data-hackathon/backend/backend:latest', '--region', 'asia-east1']
   
   
+  
+  
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
   - 'run'
