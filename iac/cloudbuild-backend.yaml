@@ -1,7 +1,7 @@
 steps:
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/fyp-open-data-hackathon/backend', '-f', '/backend/dockerfile', '.']
+  args: ['build', '-t', 'gcr.io/fyp-open-data-hackathon/backend', '-f', 'backend/dockerfile', '.']
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/fyp-open-data-hackathon/backend']
