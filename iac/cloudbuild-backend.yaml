@@ -11,7 +11,7 @@ steps:
 
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:latest'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'backend', '--image', 'gcr.io/fyp-open-data-hackathon/backend', '--region', 'east-asia2']
+  args: ['run', 'deploy', 'backend', '--image', 'gcr.io/asia-east1-docker.pkg.dev/fyp-open-data-hackathon/backend', '--region', 'asia-east1']
 
 images:
 - gcr.io/fyp-open-data-hackathon/backend
