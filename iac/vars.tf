@@ -8,6 +8,6 @@ variable "zone" {
 }
 
 variable "credentials" {
-  type = string
+  type    = string
   default = "../secretes/fyp-open-data-hackathon-8644213ecdba.json"
 }
