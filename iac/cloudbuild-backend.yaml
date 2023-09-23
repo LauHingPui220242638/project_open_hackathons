@@ -11,3 +11,5 @@ steps:
   args: ['run', 'deploy', 'backend', '--image', 'gcr.io/fyp-open-data-hackathon/backend', '--region', 'east-asia2']
 images:
 - gcr.io/fyp-open-data-hackathon/backend
+options:
+  logging: CLOUD_LOGGING_ONLY
