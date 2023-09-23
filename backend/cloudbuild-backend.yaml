@@ -1,17 +1,17 @@
 steps:
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/fyp-open-data-hackathon/backend', '-f', 'dockerfile', '.']
+  args: ['build', '-t', 'asia-east1-docker.pkg.dev/fyp-open-data-hackathon/backend/backend:latest', '-f', 'dockerfile', '.']
   dir: 'backend/'
   
 - name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia-east1-docker.pkg.dev/fyp-open-data-hackathon/backend/backend:latest']
   dir: 'backend/'
-  args: ['push', 'gcr.io/fyp-open-data-hackathon/backend']
   
 
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:latest'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'backend', '--image', 'gcr.io/fyp-open-data-hackathon/backend', '--region', 'asia-east1']
+  args: ['run', 'deploy', 'backend', '--image', 'fyp-open-data-hackathon/backend/backend:latest', '--region', 'asia-east1']
 
 images:
 - gcr.io/fyp-open-data-hackathon/backend
