@@ -1,10 +1,10 @@
 variable "region" {
   type    = string
-  default = "east-asia2"
+  default = "asia-east1"
 }
 variable "zone" {
   type    = string
-  default = "east-asia2-a"
+  default = "asia-east1-a"
 }
 
 variable "credentials" {

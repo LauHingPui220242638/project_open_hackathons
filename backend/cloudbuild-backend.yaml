@@ -14,7 +14,7 @@ steps:
   args: ['run', 'deploy', 'backend', '--image', 'fyp-open-data-hackathon/backend/backend:latest', '--region', 'asia-east1']
 
 images:
-- gcr.io/fyp-open-data-hackathon/backend
+- asia-east1-docker.pkg.dev/fyp-open-data-hackathon/backend/
 
 logsBucket: 'gs://bucket_general_leo/build_log'
 

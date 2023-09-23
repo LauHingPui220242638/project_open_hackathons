@@ -1,7 +1,7 @@
 
 # resource "google_cloudbuild_trigger" "trigger-backend" {
 #   location = var.region
-  
+
 #   github {
 #     owner = "hashicorp"
 #     name  = "terraform-provider-google-beta"
@@ -24,22 +24,15 @@ resource "google_artifact_registry_repository" "artifact-registry-cloudrun" {
 }
 
 
-# resource "google_cloud_run_service" "cloudrun-backend" {
-#   name     = "backend"
-#   location = var.region
+resource "google_cloud_run_service" "cloud-run-backend" {
+  name = "cloudrun-backend"
+  location = var.region
 
-#   template {
-#     spec {
-#       containers {
-#         image = "gcr.io/${google_artifact_registry_repository.artifact-registry-cloudrun.name}/backend"
-#       }
-#     }
-#   }
-
-#   metadata {
-#     annotations = {
-#       "autoscaling.knative.dev/maxScale" = "1"
-#     }
-#   }
-#   depends_on = [ google_cloud_run_service.cloudrun-backend ]
-# }
+  template {
+	spec {
+  	containers {
+        image = "asia-east1-docker.pkg.dev/fyp-open-data-hackathon/backend/backend:latest"
+      }
+    }
+  }
+}
