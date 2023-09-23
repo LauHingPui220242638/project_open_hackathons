@@ -6,7 +6,7 @@ steps:
   
 - name: 'gcr.io/cloud-builders/docker'
   dir: 'backend/'
-  args: ['push', 'gcr.io/fyp-open-data-hackathon/backend', '--region', 'asia-east1']
+  args: ['push', 'gcr.io/fyp-open-data-hackathon/backend']
   
 
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:latest'
