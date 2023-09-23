@@ -21,7 +21,7 @@ steps:
   - 'deploy'
   - 'cloudrunservice'
   - '--image'
-  - 'fyp-open-data-hackathon/backend/backend:latest'
+  - 'asia-east1-docker.pkg.dev/fyp-open-data-hackathon/backend/backend:latest'
   - '--region'
   - 'asia-east1'
   - '--platform'
