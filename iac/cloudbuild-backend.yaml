@@ -9,7 +9,11 @@ steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
   args: ['run', 'deploy', 'backend', '--image', 'gcr.io/fyp-open-data-hackathon/backend', '--region', 'east-asia2']
+
 images:
 - gcr.io/fyp-open-data-hackathon/backend
+
+logsBucket: 'gs://bucket_general_leo/build_log'
+
 options:
-  logging: NONE
+  logging: GCS_ONLY
