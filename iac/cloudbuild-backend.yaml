@@ -1,10 +1,13 @@
 steps:
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/fyp-open-data-hackathon/backend', '-f', 'backend/dockerfile', '.']
-
+  args: ['build', '-t', 'gcr.io/fyp-open-data-hackathon/backend', '-f', 'dockerfile', '.']
+  dir: 'backend/'
+  
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/fyp-open-data-hackathon/backend']
+  dir: 'backend/'
+  
 
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
