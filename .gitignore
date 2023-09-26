@@ -18,3 +18,4 @@ terraform.rc
 
 **/secretes/
 **/__pycache__/
+.vscode/settings.json
