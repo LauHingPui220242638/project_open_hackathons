@@ -17,7 +17,8 @@ from io import BytesIO
 from gtts import gTTS
 
 credential = "fyp-open-data-hackathon-7fccdf48c91c.json"
-credential_path = os.path.dirname(os.getcwd()) +  "/secretes/" + credential
+credential_subpath = os.path.join("secretes", credential)
+credential_path = os.path.join(os.path.dirname(os.getcwd()) ,credential_subpath  )
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credential_path
 
 
