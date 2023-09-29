@@ -12,7 +12,8 @@
 			"ms-azuretools.vscode-docker",
 			"Dart-Code.flutter",
 			"dart-code.dart-code",
-			"redhat.vscode-yaml"
+			"redhat.vscode-yaml",
+			"Dart-Code.dart-code"
 		]
 	}
 },
