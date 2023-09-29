@@ -1,0 +1,37 @@
+steps:
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'asia-east1-docker.pkg.dev/fyp-open-data-hackathon/backend/backend:latest', '-f', 'dockerfile', '.']
+  dir: 'backend/'
+  
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia-east1-docker.pkg.dev/fyp-open-data-hackathon/backend/backend:latest']
+  dir: 'backend/'
+  
+
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:latest'
+#   entrypoint: gcloud
+#   args: ['run', 'deploy', 'backend', '--image', 'fyp-open-data-hackathon/backend/backend:latest', '--region', 'asia-east1']
+  
+  
+  
+# - name: 'gcr.io/cloud-builders/gcloud'
+#   args:
+#   - 'run'
+#   - 'deploy'
+#   - 'cloudrunservice'
+#   - '--image'
+#   - 'asia-east1-docker.pkg.dev/fyp-open-data-hackathon/backend/backend:latest'
+#   - '--region'
+#   - 'asia-east1'
+#   - '--platform'
+#   - 'managed'
+#   - '--allow-unauthenticated'
+
+images:
+- 'asia-east1-docker.pkg.dev/fyp-open-data-hackathon/backend/backend:latest'
+
+logsBucket: 'gs://bucket_general_leo/build_log'
+
+options:
+  logging: GCS_ONLY
