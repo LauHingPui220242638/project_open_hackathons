@@ -20,9 +20,11 @@ def run_query(query):
     rows = [dict(row) for row in rows_raw]
     return rows
 
-rows = run_query("SELECT word FROM `bigquery-public-data.samples.shakespeare` LIMIT 10")
+# Query data from BigQuery.
+rows = run_query("SELECT * FROM `fyp-open-data-hackathon.test.test` LIMIT 30")
 
 # Print results.
-st.write("Some wise words from Shakespeare:")
+st.write("Get data from BigQuery:")
 for row in rows:
-    st.write("✍️ " + row['word'])
+    # Print columns specifying which column.
+    st.write("✍️ " + row["Control_Point"] + " - " + str(row["Total"]))
