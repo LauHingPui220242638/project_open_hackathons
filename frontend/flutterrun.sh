@@ -1,1 +1,1 @@
-flutter run lib/main.dart -d web-server
+flutter run lib/main.dart -d web-server --dart-define MODE="DEV"
