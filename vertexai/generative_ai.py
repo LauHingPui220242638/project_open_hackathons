@@ -12,6 +12,11 @@ from PIL import Image
 from vertexai.language_models import TextGenerationModel
 from langchain.memory import ConversationBufferMemory
 from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
+from google.oauth2 import service_account
+from google.cloud import bigquery
+from sqlalchemy import *
+from sqlalchemy.engine import create_engine
+from sqlalchemy.schema import *
 
 
 credential = "fyp-open-data-hackathon-7fccdf48c91c.json"
@@ -23,9 +28,6 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credential_path
 PROJECT_ID = 'fyp-open-data-hackathon'
 LOCATION = 'us-central1'
 vertexai.init(project=PROJECT_ID, location=LOCATION)
-
-
-
 
 
 
@@ -128,5 +130,3 @@ elif model_selectbox == 'text-bison@001-Generative AI':
         with st.chat_message("assistant"):
             st.markdown(generation)
         st.session_state.messages.append({"role": "ai", "content": generation})
-
-
