@@ -1,1 +1,1 @@
-docker container run --name backendapp -p 8080:8080 backend:latest 
+docker run --name frontendapp -d -p 8080:80 frontend:latest 
