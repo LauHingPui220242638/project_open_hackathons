@@ -19,8 +19,6 @@ final homekey = GlobalKey<pagehome.PageHomeState>();
 class ChatApp extends StatefulWidget {
   ChatApp({Key? key}) : super(key: key);
 
-  
-
   @override
   State<ChatApp> createState() => _ChatAppState();
 }
@@ -29,7 +27,7 @@ class _ChatAppState extends State<ChatApp> {
   late int _currentIndex;
   late PageController _pageController;
   late List<Widget> bodyItems;
-  
+
   @override
   void initState() {
     super.initState();
@@ -37,10 +35,10 @@ class _ChatAppState extends State<ChatApp> {
     _currentIndex = 0;
 
     bodyItems = [
-    PageHome(key: homekey, chatboxgkey: chatboxgkey),
-    const Center(
-      child: Sticky(),
-    ),
+      PageHome(key: homekey, chatboxgkey: chatboxgkey),
+      const Center(
+        child: Sticky(),
+      ),
     ];
 
     _pageController = PageController(initialPage: _currentIndex);
@@ -74,10 +72,10 @@ class _ChatAppState extends State<ChatApp> {
                   label: 'Section B', icon: Icon(Icons.settings)),
             ],
             onTap: (selectedIndex) => {
-               setState(() {
-                  _currentIndex = selectedIndex;
-                  _pageController.jumpToPage(_currentIndex);}
-                )
+              setState(() {
+                _currentIndex = selectedIndex;
+                _pageController.jumpToPage(_currentIndex);
+              })
             },
           ),
           floatingActionButton: FloatingActionButton(
@@ -99,25 +97,43 @@ class _ChatAppState extends State<ChatApp> {
               print(textcontroller.text);
               state.addItemToList(userIdentity, textcontroller.text);
 
-              fetchAlbum(url: env.backendURL, state: state);
+              post(
+                  data: {"question": "How are you?"},
+                  url:
+                      env.backendURL,
+                  state: state);
             },
           ),
         ));
   }
 }
 
-fetchAlbum({required String url, required chatbox.ChatBoxState state}) async {
-  final response = await http.get(Uri.parse(url));
+post(
+    {required Map data,
+    required String url,
+    required chatbox.ChatBoxState state}) async {
+  // final response = await http.get(Uri.parse(url));
+
+  var body = json.encode(data);
+
+  final response = await http.post(Uri.parse(url),
+      headers: {
+        "Content-Type": "application/json",
+        // "Accept": "application/json",
+        // "Access-Control-Request-Method": "POST",
+        // "Access-Control-Request-Headers": "Content-Type"
+      },
+      body: body);
 
   if (response.statusCode == 200) {
     final List<Map> data;
     Iterable body = json.decode(response.body);
 
     data = List<Map>.from(body.map((e) => Map.from(e)));
-    String text = data[0]['title'];
+    String text = data[0]['response'];
     state.addItemToList("AI", text);
     return data;
   } else {
-    throw Exception('Failed to load album');
+    throw Exception('Failed to load');
   }
 }
