@@ -1,5 +1,5 @@
 const stage = String.fromEnvironment('MODE', defaultValue: 'PROD');
-String backendURL = "https://expert-space-cod-v97566x4p7qcwgqw-8080.app.github.dev/ask";
+String backendURL = "https://cloudrun-backend-qskzidtbhq-de.a.run.app/ask";
 
 
 

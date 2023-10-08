@@ -13,7 +13,8 @@
 				"Dart-Code.flutter",
 				"dart-code.dart-code",
 				"redhat.vscode-yaml",
-				"Dart-Code.dart-code"
+				"Dart-Code.dart-code",
+				"GitHub.copilot"
 			]
 		}
 	},

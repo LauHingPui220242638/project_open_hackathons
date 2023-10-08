@@ -33,7 +33,7 @@ class PageHomeState extends State<PageHome>  with AutomaticKeepAliveClientMixin<
                   controller: textcontroller,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Ask Something',
                     contentPadding: EdgeInsets.all(20.0),
                   ),

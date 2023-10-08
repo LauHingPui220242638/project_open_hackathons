@@ -16,11 +16,11 @@ class DialogBox extends StatelessWidget {
     return FittedBox(
       fit: BoxFit.scaleDown,
       child: Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           margin: EdgeInsets.all(mWdith * 0.005),
           constraints: BoxConstraints(maxWidth: mWdith*0.8),
 
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             
             borderRadius: BorderRadius.all(Radius.circular(5)),
             color: Colors.amber,

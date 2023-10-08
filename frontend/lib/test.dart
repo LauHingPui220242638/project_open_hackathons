@@ -1,7 +1,6 @@
 
 
 import 'package:http/http.dart' as http;
-import 'package:frontend/env.dart' as env;
 
 
 import 'dart:convert';

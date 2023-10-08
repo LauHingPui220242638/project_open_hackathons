@@ -9,7 +9,7 @@ import 'package:frontend/pages/pagehome.dart' as pagehome;
 
 void main() {
   env.initApp(stage: env.stage);
-  runApp(ChatApp());
+  runApp(const ChatApp());
 }
 
 const userIdentity = "Leo";
@@ -17,7 +17,7 @@ final chatboxgkey = GlobalKey<chatbox.ChatBoxState>();
 final homekey = GlobalKey<pagehome.PageHomeState>();
 
 class ChatApp extends StatefulWidget {
-  ChatApp({Key? key}) : super(key: key);
+  const ChatApp({Key? key}) : super(key: key);
 
   @override
   State<ChatApp> createState() => _ChatAppState();
@@ -61,7 +61,7 @@ class _ChatAppState extends State<ChatApp> {
           appBar: AppBar(title: const Text('$userIdentity\'s Chat')),
           body: PageView(
               controller: _pageController,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               children: bodyItems),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: _currentIndex,
@@ -127,12 +127,14 @@ post(
 
   if (response.statusCode == 200) {
     final List<Map> data;
-    Iterable body = json.decode(response.body);
+    Map<String,dynamic> body = json.decode(response.body);
 
-    data = List<Map>.from(body.map((e) => Map.from(e)));
-    String text = data[0]['response'];
+    // data = List<Map>.from(body.map((e) => Map.from(e)));
+    // String text = data[0]['response'];
+    
+    final text = body['response'];
     state.addItemToList("AI", text);
-    return data;
+    return text;
   } else {
     throw Exception('Failed to load');
   }
