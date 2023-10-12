@@ -24,12 +24,54 @@ resource "google_artifact_registry_repository" "artifact-registry-cloudrun" {
 }
 
 
-resource "google_cloud_run_service" "default" {
+
+resource "google_cloud_run_service" "cloudrun_frontend" {
+  name     = "cloudrun-frontend"
+  location = var.region
+
+    template {
+    spec {
+   
+      containers {
+      image = "asia-east1-docker.pkg.dev/fyp-open-data-hackathon/frontend/frontend:latest"
+      }
+    }
+    metadata {
+    annotations = {
+      "autoscaling.knative.dev/maxScale"      = "1"
+      }
+    }
+  }
+  
+}
+
+data "google_iam_policy" "noauth_frontend" {
+  binding {
+    role = "roles/run.invoker"
+    members = [
+      "allUsers",
+    ]
+  }
+}
+
+resource "google_cloud_run_service_iam_policy" "noauth_frontend" {
+  location    = google_cloud_run_service.cloudrun_frontend.location
+  project     = google_cloud_run_service.cloudrun_frontend.project
+  service     = google_cloud_run_service.cloudrun_frontend.name
+
+  policy_data = data.google_iam_policy.noauth_frontend.policy_data
+}
+
+
+
+
+
+
+
+resource "google_cloud_run_service" "cloudrun_backend" {
   name     = "cloudrun-backend"
   location = var.region
 
-  
-  
     template {
     spec {
    
@@ -46,7 +88,7 @@ resource "google_cloud_run_service" "default" {
   
 }
 
-data "google_iam_policy" "noauth" {
+data "google_iam_policy" "noauth_backend" {
   binding {
     role = "roles/run.invoker"
     members = [
@@ -55,10 +97,10 @@ data "google_iam_policy" "noauth" {
   }
 }
 
-resource "google_cloud_run_service_iam_policy" "noauth" {
-  location    = google_cloud_run_service.default.location
-  project     = google_cloud_run_service.default.project
-  service     = google_cloud_run_service.default.name
+resource "google_cloud_run_service_iam_policy" "noauth_backend" {
+  location    = google_cloud_run_service.cloudrun_backend.location
+  project     = google_cloud_run_service.cloudrun_backend.project
+  service     = google_cloud_run_service.cloudrun_backend.name
 
-  policy_data = data.google_iam_policy.noauth.policy_data
+  policy_data = data.google_iam_policy.noauth_backend.policy_data
 }
