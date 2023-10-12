@@ -3,7 +3,7 @@ FROM debian:latest AS build-env
 
 ARG FLUTTER_SOURCE=flutter_linux_3.13.5-stable.tar.xz
 ARG FLUTTER_SDK=/opt/
-ARG APP=/app/
+ARG APP=/app
 
 ENV PATH=$FLUTTER_SDK/flutter/bin/:$FLUTTER_SDK/flutter/bin/cache/dart-sdk/bin/:${PATH}
 
@@ -35,8 +35,12 @@ RUN flutter build web
 
 
 FROM nginx:1.21.1-alpine
-COPY --from=build-env /app/build/web /usr/share/nginx/html
-COPY ./nginx.conf /etc/nginx/nginx.conf
+
+ARG APP=/app
+
+COPY --from=build-env ${APP}/build/web /usr/share/nginx/html
+COPY --from=build-env ${APP}/nginx.conf /etc/nginx/
+
 
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
