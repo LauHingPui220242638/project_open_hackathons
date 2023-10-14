@@ -1,8 +1,8 @@
-openapi: "2.0"
+swagger: "2.0"
 info:
   title: API General
   description: "Ask ChatBot."
-  version: "4.0.0"
+  version: "9.0.0"
 host: api-gateway-7923qjyk.ue.gateway.dev
 schemes:
   - "https"
@@ -19,39 +19,31 @@ securityDefinitions:
 
 paths:
   "/ask":
-    POST:
+    post:
       
       x-google-backend:
         address: https://us-central1-fyp-open-data-hackathon.cloudfunctions.net/askchatbot
       description: "Get answer by asking ChatBot."
       operationId: "ask"
-      requestBody:
-        description: Optional description in *Markdown*
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/schemas/ask'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              user_id:
+                type: string
+              data:
+                type: object
+                properties:
+                  question:
+                    type: string
 
       responses:
-        200:
-          description: "Success."
-          schema:
-            type: string
-        400:
-          description: "The message is invalid or missing."
-
-schemas:
-    ask:
-      title: Asking ChatBot
-      type: object
-      properties:
-        user_id:
-          type: string
-        data:
-          type: object
-          properties:
-            question:
-              type: string
-      required:
-        - data
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error

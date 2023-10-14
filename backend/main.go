@@ -22,15 +22,8 @@ func main() {
 
 		
 
-		
 		var anscall Call[Ans]
 		var askcall Call[Ask]
-		
-		if BACKEND_ENV == "DEV" {
-			anscall.Data.Response = "I am Fine!! from DEV"
-		}else{
-			anscall.Data.Response = "I am Fine!! from PROD"
-		}
 		
 		
 		
@@ -44,15 +37,13 @@ func main() {
 			return
 		}
 		
-	
-		
-		// answer = askchatbot(ask)
-
-		// resp, err := http.Get('https://api-gateway-7923qjyk.ue.gateway.dev')
-		// if err != nil {
-		// 	// handle error
-		// }
-
+		api_key := c.Query("api_key")
+		anscall, err := AskChatbot(askcall,api_key)
+		if err != nil {
+			c.Error(err)
+			c.Abort()
+			return
+		}
 		println("Question: " + c.Query("api_key"))
 		println("USER ID: " + askcall.UserID)
 		println("Question: " + askcall.Data.Question)
