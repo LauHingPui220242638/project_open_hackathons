@@ -12,7 +12,7 @@ func main() {
 	router := gin.Default()
 	router.Use(CORSMiddleware())
 
-	router.GET("/", func(c *gin.Context) {
+	router.POST("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "pong",
 		})
@@ -25,6 +25,7 @@ func main() {
 		
 		var anscall Call[Ans]
 		var askcall Call[Ask]
+		
 		if BACKEND_ENV == "DEV" {
 			anscall.Data.Response = "I am Fine!! from DEV"
 		}else{
@@ -52,6 +53,8 @@ func main() {
 		// 	// handle error
 		// }
 
+		println("Question: " + c.Query("api_key"))
+		println("USER ID: " + askcall.UserID)
 		println("Question: " + askcall.Data.Question)
 		println("Response: " + anscall.Data.Response)
 		c.JSON(200, anscall)
@@ -59,13 +62,6 @@ func main() {
 
 	router.Run(":8080")
 }
-
-// func askchatbot(ask Ask) Answer {
-	
-// 	answer := 
-// 	return answer
-
-// }
 
 
 

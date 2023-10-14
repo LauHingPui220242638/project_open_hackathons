@@ -1,7 +1,7 @@
 package main
 
 type Call[D Data] struct {
-	APIKey string `json:"api_key"`
+	UserID string `json:"user_id"`
 	Data D `json:"data"`
 }
 

@@ -1,5 +1,6 @@
 const stage = String.fromEnvironment('CHATBOT_FRONTEND_MODE', defaultValue: 'PROD');
 String BACKEND_URL = "https://cloudrun-backend-qskzidtbhq-de.a.run.app/ask";
+String API_KEY = "AIzaSyA5jhZl3dPpOsr5DX4_pCgA4ibI7sDfNOM";
 
 
 

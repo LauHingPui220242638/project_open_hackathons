@@ -1,4 +1,4 @@
-swagger: "2.0"
+openapi: "2.0"
 info:
   title: API General
   description: "Ask ChatBot."
@@ -6,28 +6,33 @@ info:
 host: api-gateway-7923qjyk.ue.gateway.dev
 schemes:
   - "https"
+
+
 security:
   - api_key: []
 securityDefinitions:
 
    api_key:
+     name: api_key
      type: apiKey
      in: query
-     name: api_key
 
 paths:
   "/ask":
-    get:
+    POST:
       
       x-google-backend:
         address: https://us-central1-fyp-open-data-hackathon.cloudfunctions.net/askchatbot
       description: "Get answer by asking ChatBot."
       operationId: "ask"
-      parameters:
-        - name: name
-          in: query
-          required: true
-          type: string
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/schemas/ask'
+
       responses:
         200:
           description: "Success."
@@ -36,3 +41,17 @@ paths:
         400:
           description: "The message is invalid or missing."
 
+schemas:
+    ask:
+      title: Asking ChatBot
+      type: object
+      properties:
+        user_id:
+          type: string
+        data:
+          type: object
+          properties:
+            question:
+              type: string
+      required:
+        - data
