@@ -3,12 +3,12 @@ package main
 import (
 	"errors"
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 )
 
 
 func main() {
+	println("BACKEND_ENV: " + BACKEND_ENV)
 	router := gin.Default()
 	router.Use(CORSMiddleware())
 

@@ -8,8 +8,8 @@ ask(
     required String user_id,
     required String question}) async {
   state.addItemToList(user_id, question);
-  final body = callTemplate(user_id,{"question": question});
-  final response = await callPost(env.BACKEND_URL,'/ask',body);
+  final data = callTemplate(user_id,{"question": question});
+  final response = await callPost(env.BACKEND_URL,'/ask',data);
 
   if (response.statusCode == 200) {
     Map<String, dynamic> body = json.decode(response.body);
