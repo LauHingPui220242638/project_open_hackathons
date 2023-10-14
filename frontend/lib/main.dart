@@ -1,10 +1,11 @@
 import 'package:frontend/pages/pagehome.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+
+
 import 'package:frontend/env.dart' as env;
 import 'package:frontend/widgets/bottomsticky.dart';
 import 'package:frontend/widgets/chatbox.dart' as chatbox;
+import 'package:frontend/api/chatcall.dart' as chatcall;
 import 'package:frontend/pages/pagehome.dart' as pagehome;
 
 void main() {
@@ -93,49 +94,18 @@ class _ChatAppState extends State<ChatApp> {
 
               final homestate = homekey.currentState!;
               final textcontroller = homestate.textcontroller;
+              final question = textcontroller.text;
+              
+              print(question);
 
-              print(textcontroller.text);
-              state.addItemToList(userIdentity, textcontroller.text);
 
-              post(
-                  data: {"question": "How are you?"},
-                  url:
-                      env.backendURL,
-                  state: state);
+              chatcall.ask(
+                  state: state,
+                  user: userIdentity,
+                  question: question,
+                  );
             },
           ),
         ));
-  }
-}
-
-post(
-    {required Map data,
-    required String url,
-    required chatbox.ChatBoxState state}) async {
-  // final response = await http.get(Uri.parse(url));
-
-  var body = json.encode(data);
-
-  final response = await http.post(Uri.parse(url),
-      headers: {
-        "Content-Type": "application/json",
-        // "Accept": "application/json",
-        // "Access-Control-Request-Method": "POST",
-        // "Access-Control-Request-Headers": "Content-Type"
-      },
-      body: body);
-
-  if (response.statusCode == 200) {
-    final List<Map> data;
-    Map<String,dynamic> body = json.decode(response.body);
-
-    // data = List<Map>.from(body.map((e) => Map.from(e)));
-    // String text = data[0]['response'];
-    
-    final text = body['response'];
-    state.addItemToList("AI", text);
-    return text;
-  } else {
-    throw Exception('Failed to load');
   }
 }
