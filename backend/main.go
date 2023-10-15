@@ -1,27 +1,18 @@
 package main
 
 import (
-	// "fmt"
-
-	"fmt"
+	"errors"
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 )
 
-type Ask struct {
-	Question string `json:"question"`
-}
-
-type Answer struct {
-	Response string `json:"response"`
-}
 
 func main() {
+	println("BACKEND_ENV: " + BACKEND_ENV)
 	router := gin.Default()
 	router.Use(CORSMiddleware())
-	
-	router.GET("/", func (c *gin.Context){
+
+	router.POST("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "pong",
 		})
@@ -29,36 +20,54 @@ func main() {
 
 	router.POST("/ask", func(c *gin.Context) {
 
-		var ask Ask
-		var answer Answer
-
-		answer.Response = "I am Fine!!"
 		
-		if err := c.ShouldBindJSON(&ask); err != nil {
+
+		var anscall Call[Ans]
+		var askcall Call[Ask]
+		
+		
+		
+		if err := c.ShouldBindJSON(&askcall); err != nil {
 			c.Error(err)
 			c.Abort()
 			return
 		}
-		println("Question: " + ask.Question)
-		println("Response: " + answer.Response)
-		c.JSON(200, answer)
+		if askcall.Data.Question == "" {
+			c.Error(errors.New("Question is empty"))
+			return
+		}
+		
+		api_key := c.Query("api_key")
+		anscall, err := AskChatbot(askcall,api_key)
+		if err != nil {
+			c.Error(err)
+			c.Abort()
+			return
+		}
+		println("Question: " + c.Query("api_key"))
+		println("USER ID: " + askcall.UserID)
+		println("Question: " + askcall.Data.Question)
+		println("Response: " + anscall.Data.Response)
+		c.JSON(200, anscall)
 	})
 
 	router.Run(":8080")
 }
 
+
+
 func CORSMiddleware() gin.HandlerFunc {
-    return func(c *gin.Context) {
-        c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
-        c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
-        c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
-        c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT")
+	return func(c *gin.Context) {
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT")
 
-        if c.Request.Method == "OPTIONS" {
-            c.AbortWithStatus(204)
-            return
-        }
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(204)
+			return
+		}
 
-        c.Next()
-    }
+		c.Next()
+	}
 }
