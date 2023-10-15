@@ -10,9 +10,12 @@ class PageHome extends StatefulWidget {
   PageHomeState createState() => PageHomeState();
 }
 
-class PageHomeState extends State<PageHome> {
+class PageHomeState extends State<PageHome>  with AutomaticKeepAliveClientMixin<PageHome>{
   final textcontroller = TextEditingController();
-
+  
+  @override
+  bool get wantKeepAlive => true;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +33,7 @@ class PageHomeState extends State<PageHome> {
                   controller: textcontroller,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Ask Something',
                     contentPadding: EdgeInsets.all(20.0),
                   ),

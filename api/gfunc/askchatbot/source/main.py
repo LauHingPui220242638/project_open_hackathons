@@ -1,4 +1,6 @@
+import json
 import functions_framework
+
 
 @functions_framework.http
 def hello_http(request):
@@ -14,5 +16,17 @@ def hello_http(request):
     request_json = request.get_json(silent=True)
     request_args = request.args
 
-    name = request_args.get('ask')
-    return 'Hello {}! Bye!!'.format(name)
+    user_id = request_json.get('user_id')
+    data = request_json.get('data')
+    question = data.get('question')
+    answer = "I am Fine from Cloud Function"
+    response_data = {
+        "user_id": user_id,
+        "data": {
+            "response": "Hello {}! you asked {}, I anwser {}".format(user_id, question, answer)
+        }
+    }
+
+    response_json = json.dumps(response_data)
+
+    return response_json, 200, {'Content-Type': 'application/json'}
