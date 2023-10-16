@@ -22,9 +22,7 @@ service_account_file = "keys/fyp-open-data-hackathon-f209cbd41f8d.json" # Change
 
 project = "fyp-open-data-hackathon"
 
-dataset = "liquor"
-
-table = "edatabase_liquor"
+dataset = "ferry"
 
 sqlalchemy_url = f'bigquery://{project}/{dataset}?credentials_path={service_account_file}'
 
@@ -51,5 +49,5 @@ top_k=1000,
 
 # First query
 
-agent_executor.run("How many male users churned? ")
+agent_executor.run("What is the price of Single Journey - Adult? just check eng table")
 

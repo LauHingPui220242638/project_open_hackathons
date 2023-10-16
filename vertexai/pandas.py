@@ -41,13 +41,13 @@ def seach_location(query):
     queries = [q.strip() for q in query.split(", ")]
     matching_location = []
 
-    for query in queries:
-        found = False
-            for place in location:
-                if query.lower() in place["0|&"].lower():
-                    matching_location.append(place)
-                    found = True
-    return matching_location
+    #for query in queries:
+        #found = False
+            #for place in location:
+                #if query.lower() in place["0|&"].lower():
+                #    matching_location.append(place)
+                #    found = True
+    #return matching_location
     
 data1 = seach_location("Tai Wong Ha Resite Village")
 data1
