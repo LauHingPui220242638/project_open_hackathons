@@ -19,3 +19,7 @@ terraform.rc
 **/secretes/
 **/__pycache__/
 vertexai/.streamlit
+
+**/keys/
+
+**/.DS_Store
