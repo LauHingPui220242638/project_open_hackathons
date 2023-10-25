@@ -1,12 +1,12 @@
-import 'package:frontend/pages/pagehome.dart';
 import 'package:flutter/material.dart';
-
-
 import 'package:frontend/env.dart' as env;
-import 'package:frontend/widgets/bottomsticky.dart';
-import 'package:frontend/widgets/chatbox.dart' as chatbox;
-import 'package:frontend/api/chatcall.dart' as chatcall;
+
+
+import 'package:frontend/pages/pagehome.dart';
 import 'package:frontend/pages/pagehome.dart' as pagehome;
+import 'package:frontend/widgets/chatbox.dart' as chatbox;
+import 'package:frontend/widgets/bottomsticky.dart';
+import 'package:frontend/api/chatcall.dart' as chatcall;
 
 void main() {
   env.initApp(stage: env.stage);

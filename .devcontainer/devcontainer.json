@@ -14,7 +14,8 @@
 				"dart-code.dart-code",
 				"redhat.vscode-yaml",
 				"Dart-Code.dart-code",
-				"GitHub.copilot"
+				"GitHub.copilot",
+				"alexisvt.flutter-snippets"
 			]
 		}
 	},

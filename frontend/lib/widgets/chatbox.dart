@@ -9,12 +9,7 @@ class ChatBox extends StatefulWidget {
 }
 
 class ChatBoxState extends State<ChatBox> {
-  List<Map> dialog = [
-    {'identity': 'Leo', 'chat': 'ask some quest'},
-    {'identity': 'AI', 'chat': 'answer some content'},
-    {'identity': 'Leo', 'chat': 'ask some map'},
-    {'identity': 'AI', 'chat': 'reponse google map'},
-  ];
+  List<Map> dialog = [];
 
   @override
   void initState() {
