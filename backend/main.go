@@ -2,7 +2,9 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,7 +16,7 @@ func main() {
 
 	router.POST("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
+			"message": "Welcome to the EventChat's Backend ",
 		})
 	})
 
@@ -22,8 +24,8 @@ func main() {
 
 		
 
-		var anscall Call[Ans]
-		var askcall Call[Ask]
+		anscall := Call{}
+		askcall := Call{}
 		
 		
 		
@@ -32,22 +34,24 @@ func main() {
 			c.Abort()
 			return
 		}
-		if askcall.Data.Question == "" {
+		if askcall.Data.Chat == "" {
 			c.Error(errors.New("Question is empty"))
 			return
 		}
 		
 		api_key := c.Query("api_key")
-		anscall, err := AskChatbot(askcall,api_key)
+		anscall, err := AskChatbot(askcall, api_key)
 		if err != nil {
 			c.Error(err)
 			c.Abort()
 			return
 		}
-		println("Question: " + c.Query("api_key"))
+		println("API Key: " + c.Query("api_key"))
 		println("USER ID: " + askcall.UserID)
-		println("Question: " + askcall.Data.Question)
-		println("Response: " + anscall.Data.Response)
+		println("Question: " + askcall.Data.Chat)
+		println("Kind: " + askcall.Data.Kind)
+		println("Coordinates: " + fmt.Sprint(askcall.Data.Coordinates))
+		println("Response: " + anscall.Data.Chat)
 		c.JSON(200, anscall)
 	})
 

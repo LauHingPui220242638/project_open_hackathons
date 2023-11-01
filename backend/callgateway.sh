@@ -1,12 +1,17 @@
 # api_key="$1"
-api_key=AIzaSyCVlOJ5g15PLuYx5ZGng8CVczi4vRXsBvI
+# api_gw=https://api-gateway-7923qjyk.ue.gateway.dev
+api_gw=https://api-gw-chatbot-7923qjyk.an.gateway.dev	
+# api_key=AIzaSyCVlOJ5g15PLuYx5ZGng8CVczi4vRXsBvI
+api_key=AIzaSyDaxF5on_M6SClhdMRn64TQsrvHUC3RfAc
 curl -X 'POST' \
-  "https://api-gateway-7923qjyk.ue.gateway.dev/ask?api_key=${api_key}" \
+  "${api_gw}/ask?api_key=${api_key}" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "user_id": "00000000",
+  "user_id": "Leo",
   "data": {
-    "question": "HIHIHI"
+    "chat": "HIHIHI",
+    "kind": "text",
+    "coordinates": [0.0,0.0,0.0]
   }
 }'

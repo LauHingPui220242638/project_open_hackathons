@@ -29,20 +29,20 @@ resource "google_cloud_run_service" "cloudrun_frontend" {
   name     = "cloudrun-frontend"
   location = var.region
 
-    template {
+  template {
     spec {
-   
+
       containers {
-      image = "asia-east1-docker.pkg.dev/fyp-open-data-hackathon/frontend/frontend:latest"
+        image = "asia-east1-docker.pkg.dev/fyp-open-data-hackathon/frontend/frontend:latest"
       }
     }
     metadata {
-    annotations = {
-      "autoscaling.knative.dev/maxScale"      = "1"
+      annotations = {
+        "autoscaling.knative.dev/maxScale" = "1"
       }
     }
   }
-  
+
 }
 
 data "google_iam_policy" "noauth_frontend" {
@@ -55,9 +55,9 @@ data "google_iam_policy" "noauth_frontend" {
 }
 
 resource "google_cloud_run_service_iam_policy" "noauth_frontend" {
-  location    = google_cloud_run_service.cloudrun_frontend.location
-  project     = google_cloud_run_service.cloudrun_frontend.project
-  service     = google_cloud_run_service.cloudrun_frontend.name
+  location = google_cloud_run_service.cloudrun_frontend.location
+  project  = google_cloud_run_service.cloudrun_frontend.project
+  service  = google_cloud_run_service.cloudrun_frontend.name
 
   policy_data = data.google_iam_policy.noauth_frontend.policy_data
 }
@@ -72,20 +72,20 @@ resource "google_cloud_run_service" "cloudrun_backend" {
   name     = "cloudrun-backend"
   location = var.region
 
-    template {
+  template {
     spec {
-   
+
       containers {
-      image = "asia-east1-docker.pkg.dev/fyp-open-data-hackathon/backend/backend:latest"
+        image = "asia-east1-docker.pkg.dev/fyp-open-data-hackathon/backend/backend:latest"
       }
     }
     metadata {
-    annotations = {
-      "autoscaling.knative.dev/maxScale"      = "1"
+      annotations = {
+        "autoscaling.knative.dev/maxScale" = "1"
       }
     }
   }
-  
+
 }
 
 data "google_iam_policy" "noauth_backend" {
@@ -98,9 +98,9 @@ data "google_iam_policy" "noauth_backend" {
 }
 
 resource "google_cloud_run_service_iam_policy" "noauth_backend" {
-  location    = google_cloud_run_service.cloudrun_backend.location
-  project     = google_cloud_run_service.cloudrun_backend.project
-  service     = google_cloud_run_service.cloudrun_backend.name
+  location = google_cloud_run_service.cloudrun_backend.location
+  project  = google_cloud_run_service.cloudrun_backend.project
+  service  = google_cloud_run_service.cloudrun_backend.name
 
   policy_data = data.google_iam_policy.noauth_backend.policy_data
 }
