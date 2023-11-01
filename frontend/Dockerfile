@@ -23,7 +23,7 @@ COPY . $APP
 # RUN git clone https://github.com/flutter/flutter.git $FLUTTER_SDK
 # RUN cd $FLUTTER_SDK && git checkout efbf63d9c66b9f6ec30e9ad4611189aa80003d31
 RUN cd ${FLUTTER_SDK}
-RUN curl -L https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/${FLUTTER_SOURCE} | tar -C /opt -xJ
+RUN curl -L https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/${FLUTTER_SOURCE} | tar -C $FLUTTER_SDK -xJ
 
 
 
