@@ -31,7 +31,7 @@ steps:
 images:
 - 'asia-east1-docker.pkg.dev/fyp-open-data-hackathon/backend/backend:latest'
 
-logsBucket: 'gs://bucket_general_leo/build_log'
+# logsBucket: 'gs://bucket_general_leo/build_log'
 
 options:
   logging: GCS_ONLY
