@@ -1,12 +1,6 @@
 
 FROM debian:latest AS build-env
 
-ARG FLUTTER_SOURCE=flutter_linux_3.13.9-stable.tar.xz
-ARG FLUTTER_SDK=/opt/
-ARG APP=/app
-ENV PATH=$FLUTTER_SDK/flutter/bin/:$FLUTTER_SDK/flutter/bin/cache/dart-sdk/bin/:${PATH}
-
-
 RUN apt-get update && \
     apt-get install -y \
         xz-utils \
@@ -14,6 +8,14 @@ RUN apt-get update && \
         openssh-client \
         curl && \
     rm -rf /var/cache/apt
+
+ARG FLUTTER_SOURCE=flutter_linux_3.13.9-stable.tar.xz
+ARG FLUTTER_SDK=/usr/local/
+ARG APP=/app
+ENV PATH=$FLUTTER_SDK/flutter/bin/:$FLUTTER_SDK/flutter/bin/cache/dart-sdk/bin/:${PATH}
+
+
+
     
 WORKDIR $APP
 COPY . $APP
