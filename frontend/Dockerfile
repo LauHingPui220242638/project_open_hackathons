@@ -4,7 +4,7 @@ FROM debian:latest AS build-env
 ARG FLUTTER_SOURCE=flutter_linux_3.13.9-stable.tar.xz
 ARG FLUTTER_SDK=/opt/
 ARG APP=/app
-
+RUN git config --global --add safe.directory "*"
 ENV PATH=$FLUTTER_SDK/flutter/bin/:$FLUTTER_SDK/flutter/bin/cache/dart-sdk/bin/:${PATH}
 
 
