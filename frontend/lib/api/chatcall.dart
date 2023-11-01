@@ -14,22 +14,16 @@ ask(
 
   if (response.statusCode == 200) {
     Map<String, dynamic> body = json.decode(response.body);
+    print(body);
 
     // final List<Map> data;
     // data = List<Map>.from(body.map((e) => Map.from(e)));
     // String text = data[0]['response'];
 
-    final user_id = body['data']['user_id'];
-    final chat = body['data']['chat'];
-    final kind = body['data']['kind'];
-    final coordinates = body['data']['coordinates'];
-    state.addItemToList(user_id, 
-    {
-      "chat":chat,
-      "kind": kind,
-      "coordinates": coordinates
-    }
-    );
+    final user_id = body['user_id'];
+    final data = body['data'];
+    data['coordinates'] = (data['coordinates'] as List).map((item) => item as double).toList();
+    state.addItemToList(user_id, data);
     return chat;
   } else {
     throw Exception('Failed to load');

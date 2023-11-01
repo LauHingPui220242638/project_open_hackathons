@@ -14,11 +14,9 @@ ARG FLUTTER_SDK=/usr/local/
 ARG APP=/app
 ENV PATH=$FLUTTER_SDK/flutter/bin/:$FLUTTER_SDK/flutter/bin/cache/dart-sdk/bin/:${PATH}
 
-
+RUN git config --global --add safe.directory /usr/local/flutter
 
     
-WORKDIR $APP
-COPY . $APP
 
 # RUN git clone https://github.com/flutter/flutter.git $FLUTTER_SDK
 # RUN cd $FLUTTER_SDK && git checkout efbf63d9c66b9f6ec30e9ad4611189aa80003d31
@@ -29,6 +27,8 @@ RUN curl -L https://storage.googleapis.com/flutter_infra_release/releases/stable
 
 # RUN flutter doctor -v
 
+WORKDIR $APP
+COPY . $APP
 RUN cd $APP
 RUN flutter clean
 RUN flutter pub get

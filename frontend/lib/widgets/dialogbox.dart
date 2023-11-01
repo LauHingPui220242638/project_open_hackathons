@@ -3,7 +3,7 @@ import 'package:frontend/env.dart';
 import 'package:frontend/widgets/gmap.dart';
 
 class DialogBox extends StatelessWidget {
-  final identity;
+  final user_id;
   final chat;
   final kind;
   final List<double> coordinates;
@@ -11,7 +11,7 @@ class DialogBox extends StatelessWidget {
 
   const DialogBox({
     Key? key,
-    required this.identity,
+    required this.user_id,
     required this.chat,
     required this.kind,
     required this.coordinates ,
@@ -31,12 +31,12 @@ class DialogBox extends StatelessWidget {
           color: Colors.indigo,
         ),
         child: Column(
-          crossAxisAlignment: identity == "AI" ?  CrossAxisAlignment.end : CrossAxisAlignment.start,
+          crossAxisAlignment: user_id == "AI" ?  CrossAxisAlignment.end : CrossAxisAlignment.start,
           children: [
             Text(
-              '$identity : $chat',
+              '$user_id : $chat',
               // overflow:Wrap(),
-              textAlign: identity == "AI" ? TextAlign.right : TextAlign.left,
+              textAlign: user_id == "AI" ? TextAlign.right : TextAlign.left,
               style: TextStyle(
                 letterSpacing: 0.001,
                 fontSize: mWdith * 0.05,
