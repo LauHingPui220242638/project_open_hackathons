@@ -1,0 +1,1 @@
+docker run --name frontendapp -d -p 8080:8080 frontend:latest 
