@@ -1,16 +1,15 @@
 import vertexai
 import streamlit as st
-import requests, os 
+import os 
 import pandas as pd
 
 from langchain.llms import VertexAI
 from langchain import PromptTemplate, LLMChain
 from langchain.memory import ConversationBufferMemory
-from langchain.agents import create_pandas_dataframe_agent, create_csv_agent, AgentType
+from langchain.agents import create_pandas_dataframe_agent, AgentType
 from langchain.callbacks import StreamlitCallbackHandler
 from vertexai.language_models import TextGenerationModel
 from langchain.memory import ConversationBufferMemory
-from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
 from langchain.tools import BaseTool, Tool
 from langchain.utilities import SerpAPIWrapper
 
@@ -29,7 +28,6 @@ vertexai.init(project=PROJECT_ID, location=LOCATION)
 
 st.title("🌿🌿Green man☘️☘️")
 
-st.chat_message("ai").write('What can I help you?')
 
 
 model_selectbox = st.selectbox(
@@ -76,9 +74,7 @@ def vertexai_function():
         #memory = ConversationBufferMemory (memory_key="chat history")
         #tools = [search()]
         llm_chain = LLM_init()
-        #react = initialize_agent(tools, vertex_ai_model, data_file, agent_type=AgentType .ZERO_SHOT_REACT_DESCRIPTION, memory=memory, verbose=True) 
         read = "https://www.wastereduction.gov.hk/sites/default/files/wasteless07.csv"
-        #"https://www.epd.gov.hk/epd/sites/default/files/epd/english/environmentinhk/waste/data/files/solid-waste-disposal-quantity-by-category-en-2021.csv"
         data_file = pd.read_csv(read)
         vertex_ai_model = VertexAI(
             model_name=model_name,
@@ -109,7 +105,6 @@ def generationai_function():
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
-    
     
     if prompt := st.chat_input("Talk to Generative AI on Green man"):
         st.session_state.messages.append({"role": "user", "content": prompt})
