@@ -1,0 +1,190 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1585, 22.2813]
+		},
+		"properties": {
+		  "routeId": 2000410,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2813,114.1585",
+		  "locStartNameE": "Cyberport",
+		  "locEndNameE": "Quarry Bay (Shipyard Lane) (Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000410",
+		  "stopNameE": "Cyberport Public Transport Interchange"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1847, 22.2728]
+		},
+		"properties": {
+		  "routeId": 2000420,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2728,114.1847",
+		  "locStartNameE": "Kennedy Town",
+		  "locEndNameE": "North Point Ferry Pier (Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000420",
+		  "stopNameE": "Kennedy Town MTR Station"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.2226, 22.2783]
+		},
+		"properties": {
+		  "routeId": 2000430,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2783,114.2226",
+		  "locStartNameE": "Central (Exchange Square)",
+		  "locEndNameE": "Causeway Bay (Tin Hau) (Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000430",
+		  "stopNameE": "Central (Exchange Square)"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1913, 22.2791]
+		},
+		"properties": {
+		  "routeId": 2000440,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2791,114.1913",
+		  "locStartNameE": "Sheung Wan",
+		  "locEndNameE": "Happy Valley (Lower Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000440",
+		  "stopNameE": "Sheung Wan MTR Station"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1766, 22.2767]
+		},
+		"properties": {
+		  "routeId": 2000450,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2767,114.1766",
+		  "locStartNameE": "Sai Ying Pun",
+		  "locEndNameE": "Central (Exchange Square) (Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000450",
+		  "stopNameE": "Sai Ying Pun MTR Station"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1672, 22.3145]
+		},
+		"properties": {
+		  "routeId": 2000460,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.3145,114.1672",
+		  "locStartNameE": "Sham Shui Po",
+		  "locEndNameE": "Kowloon Tong (Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000460",
+		  "stopNameE": "Sham Shui Po MTR Station"
+		}
+	},
+	{
+	"type": "FeatureCollection",
+	"features": [
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1585, 22.2813]
+		},
+		"properties": {
+		  "routeId": 2000410,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2813,114.1585",
+		  "locStartNameE": "Cyberport",
+		  "locEndNameE": "Quarry Bay (Shipyard Lane) (Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000410",
+		  "stopNameE": "Cyberport Public Transport Interchange"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1234, 22.3456]
+		},
+		"properties": {
+		  "routeId": 2000420,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.3456,114.1234",
+		  "locStartNameE": "Central",
+		  "locEndNameE": "Tsim Sha Tsui",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000420",
+		  "stopNameE": "Central Station"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1567, 22.3201]
+		},
+		"properties": {
+		  "routeId": 2000430,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.3201,114.1567",
+		  "locStartNameE": "Mong Kok",
+		  "locEndNameE": "Causeway Bay",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000430",
+		  "stopNameE": "Mong Kok Station"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1889, 22.3190]
+		},
+		"properties": {
+		  "routeId": 2000440,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.3190,114.1889",
+		  "locStartNameE": "Wan Chai",
+		  "locEndNameE": "Central",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000440",
+		  "stopNameE": "Wan Chai MTR Station"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1733, 22.2819]
+		},
+		"properties": {
+		  "routeId": 2000450,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2819,114.1733",
+		  "locStartNameE": "Sheung Wan",
+		  "locEndNameE": "Stanley",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000450",
+		  "stopNameE": "Sheung Wan MTR Station"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.2020, 22.2763]
+		},
+		"properties": {
+		  "routeId": 2000460,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2763,114.2020",
+		  "locStartNameE": "Causeway Bay",
+		  "locEndNameE": "Kowloon City",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000460",
+		  "stopNameE": "Causeway Bay Station"
+		}
+	  }
+	]
+	}
+	]
+}

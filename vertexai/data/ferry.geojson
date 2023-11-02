@@ -1,0 +1,185 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.165,
+          22.248
+        ]
+      },
+      "properties": {
+        "routeId": 7001,
+        "routeNameE": "Aberdeen - Ap Lei Chau",
+        "locStartNameE": "Aberdeen",
+        "locEndNameE": "Ap Lei Chau",
+        "hyperlinkE": "https://www.td.gov.hk/en/transport_in_hong_kong/public_transport/ferries/kaito_services_map/service_details/index.html#k10",
+        "stopNameE": "Aberdeen"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.105,
+          22.203
+        ]
+      },
+      "properties": {
+        "routeId": 7002,
+        "routeNameE": "Aberdeen/Stanley - Po Toi Island",
+        "locStartNameE": "Aberdeen/Stanley",
+        "locEndNameE": "Po Toi Island",
+        "hyperlinkE": "https://www.td.gov.hk/en/transport_in_hong_kong/public_transport/ferries/kaito_services_map/service_details/index.html#k10",
+        "stopNameE": "Aberdeen/Stanley"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.031,
+          22.209
+        ]
+      },
+      "properties": {
+        "routeId": 7003,
+        "routeNameE": "Cheung Chau Public Pier - Sai Wan",
+        "locStartNameE": "Cheung Chau Public Pier",
+        "locEndNameE": "Sai Wan",
+        "hyperlinkE": "https://www.td.gov.hk/en/transport_in_hong_kong/public_transport/ferries/kaito_services_map/service_details/index.html#k10",
+        "stopNameE": "Cheung Chau Public Pier"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.281,
+          22.467
+        ]
+      },
+      "properties": {
+        "routeId": 7004,
+        "routeNameE": "Ma Liu Shui – Lai Chi Wo",
+        "locStartNameE": "Ma Liu Shui",
+        "locEndNameE": "Lai Chi Wo",
+        "hyperlinkE": "https://www.td.gov.hk/en/transport_in_hong_kong/public_transport/ferries/kaito_services_map/service_details/index.html#k10",
+        "stopNameE": "Ma Liu Shui"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.31,
+          22.511
+        ]
+      },
+      "properties": {
+        "routeId": 7005,
+        "routeNameE": "Ma Liu Shui - Kat O/Ap Chau",
+        "locStartNameE": "Ma Liu Shui",
+        "locEndNameE": "Kat O/Ap Chau",
+        "hyperlinkE": "https://www.td.gov.hk/en/transport_in_hong_kong/public_transport/ferries/kaito_services_map/service_details/index.html#k10",
+        "stopNameE": "Ma Liu Shui"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.329,
+          22.463
+        ]
+      },
+      "properties": {
+        "routeId": 7006,
+        "routeNameE": "Ma Liu Shui - Tap Mun",
+        "locStartNameE": "Ma Liu Shui",
+        "locEndNameE": "Tap Mun",
+        "hyperlinkE": "https://www.td.gov.hk/en/transport_in_hong_kong/public_transport/ferries/kaito_services_map/service_details/index.html#k10",
+        "stopNameE": "Ma Liu Shui"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.327,
+          22.517
+        ]
+      },
+      "properties": {
+        "routeId": 7007,
+        "routeNameE": "Ma Liu Shui - Tung Ping Chau",
+        "locStartNameE": "Ma Liu Shui",
+        "locEndNameE": "Tung Ping Chau",
+        "hyperlinkE": "https://www.td.gov.hk/en/transport_in_hong_kong/public_transport/ferries/kaito_services_map/service_details/index.html#k10",
+        "stopNameE": "Ma Liu Shui"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.234,
+          22.274
+        ]
+      },
+      "properties": {
+        "routeId": 7008,
+        "routeNameE": "Sai Wan Ho - Tung Lung Island",
+        "locStartNameE": "Sai Wan Ho",
+        "locEndNameE": "Tung Lung Island",
+        "hyperlinkE": "https://www.td.gov.hk/en/transport_in_hong_kong/public_transport/ferries/kaito_services_map/service_details/index.html#k10",
+        "stopNameE": "Sai Wan Ho"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.231,
+          22.276
+        ]
+      },
+      "properties": {
+        "routeId": 7009,
+        "routeNameE": "Sam Ka Tsuen - Tung Lung Island",
+        "locStartNameE": "Sam Ka Tsuen",
+        "locEndNameE": "Tung Lung Island",
+        "hyperlinkE": "https://www.td.gov.hk/en/transport_in_hong_kong/public_transport/ferries/kaito_services_map/service_details/index.html#k10",
+        "stopNameE": "Sam Ka Tsuen"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.27,
+          22.365
+        ]
+      },
+      "properties": {
+        "routeId": 7010,
+        "routeNameE": "Sai Kung – Fo Tau Fan Chau",
+        "locStartNameE": "Sai Kung",
+        "locEndNameE": "Fo Tau Fan Chau",
+        "hyperlinkE": "https://www.td.gov.hk/en/transport_in_hong_kong/public_transport/ferries/kaito_services_map/service_details/index.html#k10",
+        "stopNameE": "Sai Kung"
+      }
+    }
+  ]
+}
