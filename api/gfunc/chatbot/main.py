@@ -22,12 +22,20 @@ def ask(request):
     kind = data.get('kind')
     coordinates = data.get('coordinates')
     answer = "I am Fine from Cloud Function"
+    
+
+    kind = "map"
+    coord_x : float = 22.195671
+    coord_y : float = 113.54797
+    coord_z : float = 16.0
+    coordinates : list[float] = [coord_x, coord_y, coord_z]
+    
     response_data = {
-        "user_id": user_id,
+        "user_id": "AI",
         "data": {
             "chat": "Hello {}! you asked {} with kind {} and coordinates {}, I anwser {}".format(user_id, chat, kind, coordinates, answer),
-            "kind": "text",
-            "coordinates":  [123.21, 13.2323, 12.2]
+            "kind": kind,
+            "coordinates":  coordinates
         }
     }
 

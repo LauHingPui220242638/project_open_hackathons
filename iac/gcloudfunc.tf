@@ -17,7 +17,7 @@ data "archive_file" "chatbot-zip" {
 
 resource "google_storage_bucket_object" "gcloudfunc-chatbot-source" {
     depends_on = [data.archive_file.chatbot-zip]
-    name   = "gcloudfunc-chatbot-source.zip"
+    name   = "gcloudfunc-chatbot-source-${data.archive_file.chatbot-zip.output_md5}.zip"
     bucket = google_storage_bucket.gcloudfunc-chatbot-bucket.name
     source = "../api/gfunc/chatbot.zip"
 }

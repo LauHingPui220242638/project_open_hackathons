@@ -73,7 +73,7 @@ class ChatBoxState extends State<ChatBox> {
           final data = dialog[index]['data'];
           final chat = data['chat'];
           final kind = data['kind'];
-          final coordinates = data['coordinates'] ?? [0.0,0.0];
+          final coordinates = data['coordinates'];
           return Align(
             alignment:
                 user_id == "AI" ? Alignment.centerRight : Alignment.centerLeft,
