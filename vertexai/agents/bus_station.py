@@ -64,6 +64,8 @@ def bus_agent():
     result = agent.run('Please describe the coordinates and Google URL of 5 location. It needs to be expressed in complete sentences.')    
     return result
     
+    
+    
 def ferry_agent():
     path = './vertexai/data/ferry.geojson'
     
@@ -82,6 +84,7 @@ def ferry_agent():
     agent = create_pandas_dataframe_agent(vertex_ai_model, ferry, verbose=True)
     result = agent.run('Please describe the coordinates and Google URL of 5 location. It needs to be expressed in complete sentences.')
     return result
+    
     
 def minibus_agent():
     path = './vertexai/data/minibus.geojson'
@@ -106,33 +109,21 @@ bus = bus_agent()
 ferry = ferry_agent()
 minibus = minibus_agent()
 
-tools = [
-    Tool(
-        func=bus().run,
-        name="bus"
-    ),
-    Tool(
-        func=ferry().run,
-        name="ferry"
-    ),
-    Tool(
-        func=minibus().run,
-        name="minibus"
+
+def agent():
+    
+    llm = LLM_init()
+    vertex_ai_model = VertexAI(
+        model_name='text-bison-32k',
+        llm=llm,
+        max_output_tokens=500,
+        temperature=0.3,
+        top_p=0.8,
+        top_k=40
     )
-]
 
-llm_chain = LLM_init()
-vertex_ai_model = VertexAI(
-    model_name='text-bison-32k',
-    llm_chain=llm_chain,
-    max_output_tokens=500,
-    temperature=0.3,
-    top_p=0.8,
-    top_k=40
-)
-
-agent = initialize_agent(
-    tools, vertex_ai_model, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True
-)
-
-print(agent.run('Please list the coordinates and Google Maps url of each 5 ferry stop, 5 bus stop and 5 minibus stop.'))
+    
+    agent = create_pandas_dataframe_agent(vertex_ai_model, bus, ferry, minibus, verbose=True)
+    result = agent.run('Finally, please list the coordinates of 2 location. It needs to be expressed in complete sentences.')
+    
+    return result

@@ -8,8 +8,10 @@ from langchain.agents import create_pandas_dataframe_agent
 from langchain.agents.agent_types import AgentType
 from langchain import PromptTemplate, LLMChain
 from langchain.memory import ConversationBufferMemory
+from langchain.output_parsers import StructuredOutputParser
+from langchain.output_parsers import ResponseSchema
 
-
+from minibus_item import InfoItem, Info
 
 credential = "/workspaces/project_open_hackathons/secretes/fyp-open-data-hackathon-7fccdf48c91c.json"
 credential_subpath = os.path.join("secretes", credential)
@@ -26,7 +28,7 @@ vertexai.init(project=PROJECT_ID, location=LOCATION)
 def LLM_init():
     template = """
     You have some minibus stop geojson file. 
-    You must list the location and Google Maps url of each minibus stop.
+    You must list the location start name or end name or Google Maps url of each minibus stop.
     {chat_history}
         Human: {human_input}
         Chatbot:"""
@@ -60,8 +62,8 @@ def minibus_agent():
         top_k=40
     )
     
-    agent = create_pandas_dataframe_agent(vertex_ai_model, minibus, verbose=True, max_execution_time=10,)
-    result = agent.run('Please list the location name, coordinates and google map url of 10 minibus stops')
+    agent = create_pandas_dataframe_agent(vertex_ai_model, minibus, verbose=True,max_execution_time=10,)
+    result = agent.run('Please list the locStartNameE and coordinates of 5 minibus stops')
     
     return result
 
@@ -81,29 +83,24 @@ def ferry_agent():
         top_k=40
     )
     
-    agent = create_pandas_dataframe_agent(vertex_ai_model, ferry, verbose=True, max_execution_time=10,)
-    result = agent.run('Please list the location name, coordinates and google map url of 8 ferry stops')
+    agent = create_pandas_dataframe_agent(vertex_ai_model, ferry, verbose=True,max_execution_time=10,)
+    result = agent.run('Please list the locStartNameE, coordinates and google map url of 5 ferry stops')
     
     return result
 
+
 minibus_agent_data = minibus_agent()
 ferry_agent_data = ferry_agent()
-
-
+  
 
 def run_and_compare_queries(minibus, ferry, query: str):
-    """Compare outputs of Langchain Agents running on real vs. synthetic data"""
-    query_template = f"{query} Execute all necessary queries, and always return results to the query, no explanations or apologies please. Word wrap output every 50 characters."
- 
- 
+    query_template = f"{query}"
+
     result1 = minibus.run(query_template)
     result2 = ferry.run(query_template)
- 
-    print("=== Comparing Results for Query ===")
-    print(f"Query: {query}")
+
     
-    
-    prompt = """Please list and describute the location name and google map url of 2 ferry stops and 2 minibus stops."""
-    
-    run_and_compare_queries(minibus=minibus_agent_data, ferry=ferry_agent_data, query=prompt)
-    
+    prompt = "Please give me coordinates for 1 ferry stops and 1 minibus stops."
+
+    result = run_and_compare_queries(minibus=minibus_agent_data, ferry=ferry_agent_data, query=prompt)
+    return result

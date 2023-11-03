@@ -2,14 +2,14 @@ import pandas as pd
 import vertexai
 import os
 import geopandas as gpd
-import googlemaps
+import json
+import requests
 
 from langchain.llms import VertexAI
 from langchain.agents import create_pandas_dataframe_agent
 from langchain.tools import GooglePlacesTool, Tool
 from langchain import PromptTemplate, LLMChain
 from langchain.memory import ConversationBufferMemory
-from langchain.cache import SQLiteCache
 
 
 
@@ -29,6 +29,8 @@ def LLM_init():
     template = """
     You have some ferry stop geojson file. 
     You must list the location and Google Maps url of each ferry stop.
+    Here is the output json structure example: 'response_data = {{\"coordinates\":[123.4,321.5,122.34]}}'
+    Only return the coordinates in the json structure.
     {chat_history}
         Human: {human_input}
         Chatbot:"""
@@ -46,7 +48,6 @@ def LLM_init():
     return llm_chain
 
 
-set_llm_cache(SQLiteCache(database_path=".langchain.db"))
 
 def ferry_agent():
     path = './vertexai/data/ferry.geojson'
@@ -63,8 +64,24 @@ def ferry_agent():
         top_k=40
     )
     
-    agent = create_pandas_dataframe_agent(vertex_ai_model, ferry, verbose=True)
-    result = agent.run('Please list the coordinates  of 5 ferry stops')
+    agent = create_pandas_dataframe_agent(vertex_ai_model, ferry, verbose=True,)
+    result = agent.run('Please list on coordinates of 1 ferry stops.')
+
     return result
 
-print(ferry_agent())
+agent_ferry = ferry_agent()
+
+
+
+
+
+
+test_data_json_en = json.loads(agent_ferry.encode('utf-8'))
+
+start = test_data_json_en['data'][0]['coordinates']
+
+
+print(start)
+print(type(start))
+#print(test_data_json_en['coordinates'])
+
