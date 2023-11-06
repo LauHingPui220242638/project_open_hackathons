@@ -1,9 +1,9 @@
 swagger: "2.0"
 info:
-  title: API General
+  title: API ChatBot
   description: "Ask ChatBot."
-  version: "9.0.0"
-host: api-gateway-7923qjyk.ue.gateway.dev
+  version: "10.0.0"
+
 schemes:
   - "https"
 
@@ -22,7 +22,7 @@ paths:
     post:
       
       x-google-backend:
-        address: https://us-central1-fyp-open-data-hackathon.cloudfunctions.net/askchatbot
+        address: https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net/gcloudfunc-chatbot
       description: "Get answer by asking ChatBot."
       operationId: "ask"
       parameters:
@@ -37,8 +37,14 @@ paths:
               data:
                 type: object
                 properties:
-                  question:
+                  chat:
                     type: string
+                  kind:
+                    type: string
+                  coordinates:
+                    type: array
+                    items:
+                      type: number
 
       responses:
         '200':

@@ -1,0 +1,1 @@
+flutter run lib/test.dart -d web-server --web-port 9090  --web-browser-flag "--disable-web-security"

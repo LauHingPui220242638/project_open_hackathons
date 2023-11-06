@@ -1,19 +1,18 @@
-import 'package:frontend/pages/pagehome.dart';
 import 'package:flutter/material.dart';
-
-
 import 'package:frontend/env.dart' as env;
-import 'package:frontend/widgets/bottomsticky.dart';
-import 'package:frontend/widgets/chatbox.dart' as chatbox;
-import 'package:frontend/api/chatcall.dart' as chatcall;
+
+import 'package:frontend/pages/pagehome.dart';
 import 'package:frontend/pages/pagehome.dart' as pagehome;
+import 'package:frontend/widgets/chatbox.dart' as chatbox;
+import 'package:frontend/widgets/bottomsticky.dart';
+import 'package:frontend/api/chatcall.dart' as chatcall;
 
 void main() {
   env.initApp(stage: env.stage);
   runApp(const ChatApp());
 }
 
-const userIdentity = "Leo";
+const user_id = "Leo";
 final chatboxgkey = GlobalKey<chatbox.ChatBoxState>();
 final homekey = GlobalKey<pagehome.PageHomeState>();
 
@@ -53,13 +52,22 @@ class _ChatAppState extends State<ChatApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Chat App',
+        title: 'EventChat',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.amber,
+          ),
+          scaffoldBackgroundColor: Color.fromARGB(255, 46, 7, 41),
         ),
         home: Scaffold(
-          appBar: AppBar(title: const Text('$userIdentity\'s Chat')),
+          appBar: AppBar(
+            title: const Text(
+              'Hi! $user_id\'s, Welcome to EventChat',
+              textAlign: TextAlign.center,
+            ),
+            backgroundColor: Theme.of(context).colorScheme.surfaceTint,
+          ),
           body: PageView(
               controller: _pageController,
               physics: const NeverScrollableScrollPhysics(),
@@ -94,16 +102,15 @@ class _ChatAppState extends State<ChatApp> {
 
               final homestate = homekey.currentState!;
               final textcontroller = homestate.textcontroller;
-              final question = textcontroller.text;
-              
-              print(question);
+              final chat = textcontroller.text;
 
+              print(chat);
 
               chatcall.ask(
-                  state: state,
-                  user_id: userIdentity,
-                  question: question,
-                  );
+                state: state,
+                user_id: user_id,
+                chat: chat,
+              );
             },
           ),
         ));

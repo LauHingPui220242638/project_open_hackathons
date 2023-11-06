@@ -14,7 +14,11 @@
 				"ms-python.vscode-pylance",
 				"ms-azuretools.vscode-docker",
 				"Dart-Code.flutter",
-				"dart-code.dart-code"
+				"dart-code.dart-code",
+				"redhat.vscode-yaml",
+				"Dart-Code.dart-code",
+				"GitHub.copilot",
+				"alexisvt.flutter-snippets"
 			]
 		}
 	},

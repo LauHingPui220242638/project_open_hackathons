@@ -3,7 +3,7 @@ import functions_framework
 
 
 @functions_framework.http
-def hello_http(request):
+def ask(request):
     """HTTP Cloud Function.
     Args:
         request (flask.Request): The request object.
@@ -18,12 +18,24 @@ def hello_http(request):
 
     user_id = request_json.get('user_id')
     data = request_json.get('data')
-    question = data.get('question')
+    chat = data.get('chat')
+    kind = data.get('kind')
+    coordinates = data.get('coordinates')
     answer = "I am Fine from Cloud Function"
+    
+
+    kind = "map"
+    coord_x : float = 22.195671
+    coord_y : float = 113.54797
+    coord_z : float = 16.0
+    coordinates : list[float] = [coord_x, coord_y, coord_z]
+    
     response_data = {
-        "user_id": user_id,
+        "user_id": "AI",
         "data": {
-            "response": "Hello {}! you asked {}, I anwser {}".format(user_id, question, answer)
+            "chat": "Hello {}! you asked {} with kind {} and coordinates {}, I anwser {}".format(user_id, chat, kind, coordinates, answer),
+            "kind": kind,
+            "coordinates":  coordinates
         }
     }
 
