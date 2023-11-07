@@ -1,13 +1,21 @@
 steps:
+# Build the Docker image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/my-function', '.']
+
+# Push the Docker image to Google Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/my-function']
+
+# Deploy to Cloud Functions
 - name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'bash'
   args:
-  - '-c'
-  - |
-    for i in {1..3}; do
-      gcloud functions deploy query_bigquery --runtime python39 --trigger-http --allow-unauthenticated --region $_REGION --source . --entry-point query_bigquery && break || sleep 15;
-    done
-  id: 'Deploy Function'
-timeout: '1600s'
-substitutions:
-  _REGION: 'asia-east1'
+    - functions
+    - deploy
+    - query_bigquery
+    - --trigger-http
+    - --runtime=python39
+    - --entry-point=query_bigquery
+    - --region=asia-east1
+    - --source=.
+    - --allow-unauthenticated

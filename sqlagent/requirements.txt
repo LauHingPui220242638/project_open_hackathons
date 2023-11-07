@@ -24,3 +24,4 @@ tzdata==2023.3
 tzlocal==5.0.1
 vertexai==0.0.1
 websockets==11.0.3
+werkzeug==2.0.2

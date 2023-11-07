@@ -9,6 +9,9 @@ gcloud functions call query_bigquery --data '{"query": "What is the price of Sin
 gcloud functions logs read query_bigquery
 
 ---
-docker build -t query_bigquery .
-docker run -p 8080:8080 query_bigquery
+to test:
+curl -m 70 -X POST https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net/query_bigquery \
+-H "Authorization: bearer $(gcloud auth print-identity-token)" \
+-H "Content-Type: application/json" \
+-d '{"query": "What is the price of Single Journey - Adult? just check eng table"}'
 
