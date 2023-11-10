@@ -24,6 +24,9 @@ ask(
     final data = body['data'];
     data['coordinates'] = (data['coordinates'] as List).map((item) => item as double).toList();
     state.addItemToList(userId, data);
+    state.setScollingStart(true);
+    state.scrollDown();
+
     return chat;
   } else {
     throw Exception('Failed to load');

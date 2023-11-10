@@ -71,7 +71,7 @@ class _ChatAppState extends State<ChatApp> {
           ),
           body: PageView(
               controller: _pageController,
-              physics: const NeverScrollableScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               children: bodyItems),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: _currentIndex,

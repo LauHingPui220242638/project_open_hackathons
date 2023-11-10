@@ -3,14 +3,14 @@ import 'package:frontend/env.dart';
 import 'package:frontend/widgets/gmap.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
-class DialogBox extends StatelessWidget {
+class DialogBox extends StatefulWidget {
   final user_id;
   final chat;
   final kind;
   final coordinates;
   
 
-  const DialogBox({
+  DialogBox({
     Key? key,
     required this.user_id,
     required this.chat,
@@ -18,9 +18,23 @@ class DialogBox extends StatelessWidget {
     required this.coordinates ,
   }): super(key: key);
 
+  _DialogBoxState createState() => _DialogBoxState();
+}
+
+
+class _DialogBoxState extends State<DialogBox> with AutomaticKeepAliveClientMixin{
+  
+  
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+    
     final mWdith = MediaQuery.of(context).size.width;
+    final userId = widget.user_id;
+    final chat = widget.chat;
+    final kind = widget.kind;
+    final coordinates = widget.coordinates;
+    
     return FittedBox(
       fit: BoxFit.scaleDown,
       child: Container(
@@ -32,15 +46,15 @@ class DialogBox extends StatelessWidget {
           color: Colors.indigo,
         ),
         child: Column(
-          crossAxisAlignment: user_id == "AI" ?  CrossAxisAlignment.end : CrossAxisAlignment.start,
+          crossAxisAlignment: userId == "AI" ?  CrossAxisAlignment.end : CrossAxisAlignment.start,
           children: [
             AnimatedTextKit(
               isRepeatingAnimation: false,
               animatedTexts: [TyperAnimatedText(
-                '$user_id : $chat',
+                '$userId : $chat',
                 // overflow:Wrap(),
                 
-                textAlign: user_id == "AI" ? TextAlign.right : TextAlign.left,
+                textAlign: userId == "AI" ? TextAlign.right : TextAlign.left,
                 textStyle: TextStyle(
                   letterSpacing: 0.001,
                   fontSize: mWdith * 0.05,
@@ -56,4 +70,8 @@ class DialogBox extends StatelessWidget {
       ),
     );
   }
+  
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

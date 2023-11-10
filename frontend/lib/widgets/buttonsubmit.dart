@@ -16,8 +16,8 @@ class SubmitButton extends StatefulWidget {
 class _SubmitButtonState extends State<SubmitButton> {
   late PageHomeState homestate = homekey.currentState!;
   late final textcontroller = homestate.textcontroller;
-  late ChatBoxState state = chatboxgkey.currentState!;
-  late final controller = state.controller;
+  late ChatBoxState chatboxState = chatboxgkey.currentState!;
+  late final scrollController = chatboxState.scrollController;
   SpeechToText _speechToText = SpeechToText();
   bool _speechEnabled = false;
   
@@ -48,18 +48,12 @@ class _SubmitButtonState extends State<SubmitButton> {
   void Function()? textSubmit() {
     print("adding item");
     
-
-    controller.animateTo(
-      controller.position.maxScrollExtent,
-      duration: const Duration(seconds: 2),
-      curve: Curves.fastLinearToSlowEaseIn,
-    );
-
+    
     
    
 
     chatcall.ask(
-      state: state,
+      state: chatboxState,
       user_id: user_id,
       chat: textcontroller.text,
     );
