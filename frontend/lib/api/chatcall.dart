@@ -8,7 +8,7 @@ ask(
     required String user_id,
     required String chat}) async {
   state.addItemToList( user_id,{"chat":chat,"kind": "text"});
-  
+
   final data = callTemplate(user_id,chat);
   final response = await callPost(env.BACKEND_URL,'/ask',data);
 
@@ -20,10 +20,10 @@ ask(
     // data = List<Map>.from(body.map((e) => Map.from(e)));
     // String text = data[0]['response'];
 
-    final user_id = body['user_id'];
+    final userId = body['user_id'];
     final data = body['data'];
     data['coordinates'] = (data['coordinates'] as List).map((item) => item as double).toList();
-    state.addItemToList(user_id, data);
+    state.addItemToList(userId, data);
     return chat;
   } else {
     throw Exception('Failed to load');
@@ -41,9 +41,9 @@ Future<http.Response> callPost(
   ) async {
   
   final body = json.encode(data);
-  final api_key = env.API_KEY;
+  final apiKey = env.API_KEY;
   final query = {
-    'api_key':api_key
+    'api_key':apiKey
   };
 
  
@@ -58,9 +58,9 @@ Future<http.Response> callPost(
 
 }
 
-Map<String, dynamic> callTemplate(String user_id, String chat) {
+Map<String, dynamic> callTemplate(String userId, String chat) {
   return {
-    "user_id": user_id,
+    "user_id": userId,
     "data": {
       "chat": chat,
       "kind": "text",

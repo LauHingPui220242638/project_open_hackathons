@@ -5,7 +5,7 @@ import 'package:frontend/widgets/chatbox.dart';
 import 'package:frontend/api/chatcall.dart' as chatcall;
 
 class PageHome extends StatefulWidget {
-  PageHome({Key? key, required this.chatboxgkey}) : super(key: key);
+  const PageHome({Key? key, required this.chatboxgkey}) : super(key: key);
 
   final GlobalKey chatboxgkey;
 
@@ -13,8 +13,7 @@ class PageHome extends StatefulWidget {
   PageHomeState createState() => PageHomeState();
 }
 
-class PageHomeState extends State<PageHome>
-    with AutomaticKeepAliveClientMixin<PageHome> {
+class PageHomeState extends State<PageHome> with AutomaticKeepAliveClientMixin<PageHome> {
   final textcontroller = TextEditingController();
 
   @override
@@ -22,7 +21,7 @@ class PageHomeState extends State<PageHome>
 
   @override
   Widget build(BuildContext context) {
-    late final _focusNode = FocusNode(
+    late final focusNode = FocusNode(
       onKeyEvent: (node, event) {
         final enterPressedWithoutShift = event is KeyDownEvent &&
             event.physicalKey == PhysicalKeyboardKey.enter &&
@@ -64,7 +63,7 @@ class PageHomeState extends State<PageHome>
             child: TextFormField(
               autofocus: true,
               controller: textcontroller,
-              focusNode: _focusNode,
+              focusNode: focusNode,
               keyboardType: TextInputType.multiline,
               textInputAction: TextInputAction.newline,
               maxLines: null,

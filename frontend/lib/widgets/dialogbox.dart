@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/env.dart';
 import 'package:frontend/widgets/gmap.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class DialogBox extends StatelessWidget {
   final user_id;
   final chat;
   final kind;
-  final List<double> coordinates;
+  final coordinates;
   
 
   const DialogBox({
@@ -33,16 +34,21 @@ class DialogBox extends StatelessWidget {
         child: Column(
           crossAxisAlignment: user_id == "AI" ?  CrossAxisAlignment.end : CrossAxisAlignment.start,
           children: [
-            Text(
-              '$user_id : $chat',
-              // overflow:Wrap(),
-              textAlign: user_id == "AI" ? TextAlign.right : TextAlign.left,
-              style: TextStyle(
-                letterSpacing: 0.001,
-                fontSize: mWdith * 0.05,
-                color: Colors.lightBlue,
-                // fontFamily:''
-              ),
+            AnimatedTextKit(
+              isRepeatingAnimation: false,
+              animatedTexts: [TyperAnimatedText(
+                '$user_id : $chat',
+                // overflow:Wrap(),
+                
+                textAlign: user_id == "AI" ? TextAlign.right : TextAlign.left,
+                textStyle: TextStyle(
+                  letterSpacing: 0.001,
+                  fontSize: mWdith * 0.05,
+                  color: Colors.lightBlue,
+                  // fontFamily:''
+                ),
+              )
+              ],
             ),
             kind == "map" ? GMap(coordinates: coordinates) : Container(),
           ],

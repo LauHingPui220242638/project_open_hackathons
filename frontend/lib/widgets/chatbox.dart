@@ -51,10 +51,10 @@ class ChatBoxState extends State<ChatBox> {
 
   final ScrollController controller = ScrollController();
 
-  void addItemToList( String user_id,  Map<String,dynamic> data) {
+  void addItemToList( String userId,  Map<String,dynamic> data) {
     setState(() {
       dialog.insert(dialog.length, {
-        'user_id': user_id,
+        'user_id': userId,
         'data':data,
         });
     });
@@ -69,16 +69,16 @@ class ChatBoxState extends State<ChatBox> {
         // padding: const EdgeInsets.all(8),
         itemCount: dialog.length,
         itemBuilder: (context, index) {
-          final user_id = dialog[index]['user_id'];
+          final userId = dialog[index]['user_id'];
           final data = dialog[index]['data'];
           final chat = data['chat'];
           final kind = data['kind'];
           final coordinates = data['coordinates'];
           return Align(
             alignment:
-                user_id == "AI" ? Alignment.centerRight : Alignment.centerLeft,
+                userId == "AI" ? Alignment.centerRight : Alignment.centerLeft,
             child: DialogBox(
-              user_id: user_id,
+              user_id: userId,
               chat: chat,
               kind: kind,
               coordinates: coordinates,

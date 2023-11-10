@@ -3,9 +3,9 @@ import 'package:frontend/env.dart' as env;
 
 import 'package:frontend/pages/pagehome.dart';
 import 'package:frontend/pages/pagehome.dart' as pagehome;
+import 'package:frontend/widgets/buttonsubmit.dart';
 import 'package:frontend/widgets/chatbox.dart' as chatbox;
 import 'package:frontend/widgets/bottomsticky.dart';
-import 'package:frontend/api/chatcall.dart' as chatcall;
 
 void main() {
   env.initApp(stage: env.stage);
@@ -15,6 +15,7 @@ void main() {
 const user_id = "Leo";
 final chatboxgkey = GlobalKey<chatbox.ChatBoxState>();
 final homekey = GlobalKey<pagehome.PageHomeState>();
+
 
 class ChatApp extends StatefulWidget {
   const ChatApp({Key? key}) : super(key: key);
@@ -58,7 +59,7 @@ class _ChatAppState extends State<ChatApp> {
           colorScheme: ColorScheme.fromSwatch(
             primarySwatch: Colors.amber,
           ),
-          scaffoldBackgroundColor: Color.fromARGB(255, 46, 7, 41),
+          scaffoldBackgroundColor: const Color.fromARGB(255, 46, 7, 41),
         ),
         home: Scaffold(
           appBar: AppBar(
@@ -87,32 +88,7 @@ class _ChatAppState extends State<ChatApp> {
               })
             },
           ),
-          floatingActionButton: FloatingActionButton(
-            child: const Icon(Icons.add),
-            onPressed: () {
-              print("adding item");
-              final state = chatboxgkey.currentState!;
-              final controller = state.controller;
-
-              controller.animateTo(
-                controller.position.maxScrollExtent,
-                duration: const Duration(seconds: 2),
-                curve: Curves.fastLinearToSlowEaseIn,
-              );
-
-              final homestate = homekey.currentState!;
-              final textcontroller = homestate.textcontroller;
-              final chat = textcontroller.text;
-
-              print(chat);
-
-              chatcall.ask(
-                state: state,
-                user_id: user_id,
-                chat: chat,
-              );
-            },
-          ),
+          floatingActionButton: SubmitButton(),
         ));
   }
 }

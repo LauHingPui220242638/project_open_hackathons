@@ -34,7 +34,7 @@ class GMapState extends State<GMap> {
       child: SizedBox(
           height: MediaQuery.of(context).size.height * 0.3,
           child: ClipRRect(
-            borderRadius:  BorderRadius.all(Radius.circular(ROUNDED_CORNER_GLOBAL)),
+            borderRadius:  const BorderRadius.all(Radius.circular(ROUNDED_CORNER_GLOBAL)),
             child: GoogleMap(
               
               mapType: MapType.normal,
