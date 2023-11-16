@@ -1,0 +1,236 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1585, 22.2813, 12.2]
+		},
+		"properties": {
+		  "name": "Central Station",
+		  "google_map_url": "https://maps.google.com/?q=22.2813,114.1585"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1709, 22.3226, 12.2]
+		},
+		"properties": {
+		  "name": "Mong Kok East Station",
+		  "google_map_url": "https://maps.google.com/?q=22.3226,114.1709"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1719, 22.297, 12.2]
+		},
+		"properties": {
+		  "name": "Tsim Sha Tsui Station",
+		  "google_map_url": "https://maps.google.com/?q=22.297,114.1719"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1849, 22.2805, 12.2]
+		},
+		"properties": {
+		  "name": "Causeway Bay Station",
+		  "google_map_url": "https://maps.google.com/?q=22.2805,114.1849"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1726, 22.2771, 12.2]
+		},
+		"properties": {
+		  "name": "Wan Chai Station",
+		  "google_map_url": "https://maps.google.com/?q=22.2771,114.1726"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1649, 22.2783, 12.2]
+		},
+		"properties": {
+		  "name": "Admiralty Station",
+		  "google_map_url": "https://maps.google.com/?q=22.2783,114.1649"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.2043, 22.2889, 12.2]
+		},
+		"properties": {
+		  "name": "North Point Station",
+		  "google_map_url": "https://maps.google.com/?q=22.2889,114.2043"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1494, 22.2856, 12.2]
+		},
+		"properties": {
+		  "name": "Sheung Wan Station",
+		  "google_map_url": "https://maps.google.com/?q=22.2856,114.1494"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1698, 22.3131, 12.2]
+		},
+		"properties": {
+		  "name": "Yau Ma Tei Station",
+		  "google_map_url": "https://maps.google.com/?q=22.3131,114.1698"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1717, 22.3045, 12.2]
+		},
+		"properties": {
+		  "name": "Jordan Station",
+		  "google_map_url": "https://maps.google.com/?q=22.3045,114.1717"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1281, 22.2857, 12.2]
+		},
+		"properties": {
+		  "name": "Kennedy Town Station",
+		  "google_map_url": "https://maps.google.com/?q=22.2857,114.1281"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1927, 22.2822, 12.2]
+		},
+		"properties": {
+		  "name": "Tin Hau Station",
+		  "google_map_url": "https://maps.google.com/?q=22.2822,114.1927"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1954, 22.289, 12.2]
+		},
+		"properties": {
+		  "name": "Fortress Hill Station",
+		  "google_map_url": "https://maps.google.com/?q=22.289,114.1954"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1426, 22.2866, 12.2]
+		},
+		"properties": {
+		  "name": "Sai Ying Pun Station",
+		  "google_map_url": "https://maps.google.com/?q=22.2866,114.1426"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1505, 22.3367, 12.2]
+		},
+		"properties": {
+		  "name": "Cheung Sha Wan",
+		  "google_map_url": "https://maps.google.com/?q=22.3367,114.1505"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1535, 22.3376, 12.2]
+		},
+		"properties": {
+		  "name": "Lai Chi Kok Station",
+		  "google_map_url": "https://maps.google.com/?q=22.3376,114.1535"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1595, 22.3304, 12.2]
+		},
+		"properties": {
+		  "name": "Sham Shui Po Station",
+		  "google_map_url": "https://maps.google.com/?q=22.3304,114.1595"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1694, 22.3193, 12.2]
+		},
+		"properties": {
+		  "name": "Mong Kok Station",
+		  "google_map_url": "https://maps.google.com/?q=22.3193,114.1694"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1142, 22.3687, 12.2]
+		},
+		"properties": {
+		  "name": "Tsuen Wan West Station",
+		  "google_map_url": "https://maps.google.com/?q=22.3687,114.1142"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.2579, 22.3019, 12.2]
+		},
+		"properties": {
+		  "name": "Yau Tong Station",
+		  "google_map_url": "https://maps.google.com/?q=22.3019,114.2579"
+		}
+	  },
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.2102, 22.3422, 12.2]
+		},
+		"properties": {
+		  "name": "Diamond Hill Station",
+		  "google_map_url": "https://maps.google.com/?q=22.3422,114.2102"
+		}
+	  }
+	]
+  }

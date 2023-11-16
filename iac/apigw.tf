@@ -7,7 +7,7 @@ resource "google_api_gateway_api" "api_chatbot" {
 resource "google_api_gateway_api_config" "api_config_chatbot" {
   provider   = google-beta
   api = google_api_gateway_api.api_chatbot.api_id
-  api_config_id = "api-config-chatbotv4"
+  api_config_id = "api-config-chatbotv5"
   openapi_documents {
     document {
       path     = "spec.yaml"
@@ -30,7 +30,7 @@ resource "google_api_gateway_gateway" "api_gw_chatbot" {
 
 resource "google_apikeys_key" "api_key_chatbot" {
   project     = var.project
-  name         = "api-key-chatbotv3"
+  name         = "api-key-chatbotv4"
   display_name = "api-key-chatbot"
 
   restrictions {

@@ -7,24 +7,56 @@ info:
 schemes:
   - "https"
 
-
 security:
   - api_key: []
 securityDefinitions:
-
-   api_key:
-     name: api_key
-     type: apiKey
-     in: query
+  api_key:
+    name: api_key
+    type: apiKey
+    in: query
 
 paths:
   "/ask":
     post:
-      
+      x-google-backend:
+        address: https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net/gcloudfunc-chatbot-map
+      description: "Get map by asking ChatBot."
+      operationId: "ask-map"
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              user_id:
+                type: string
+              data:
+                type: object
+                properties:
+                  chat:
+                    type: string
+                  kind:
+                    type: string
+                  coordinates:
+                    type: array
+                    items:
+                      type: number
+                      
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+                
+  "/ask-chatbot":
+    post:
       x-google-backend:
         address: https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net/gcloudfunc-chatbot
       description: "Get answer by asking ChatBot."
-      operationId: "ask"
+      operationId: "ask-chatbot"
       parameters:
         - name: body
           in: body
@@ -47,9 +79,9 @@ paths:
                       type: number
 
       responses:
-        '200':
+        "200":
           description: OK
-        '400':
+        "400":
           description: Bad Request
-        '500':
+        "500":
           description: Internal Server Error
