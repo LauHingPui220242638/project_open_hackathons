@@ -77,7 +77,7 @@ class PageHomeState extends State<PageHome> with AutomaticKeepAliveClientMixin<P
                 hintStyle: TextStyle(
                     fontSize: 40, color: Color.fromARGB(88, 207, 175, 79)),
                 contentPadding:
-                    EdgeInsets.symmetric(vertical: 60, horizontal: 20.0),
+                    EdgeInsets.symmetric(vertical: 50.0, horizontal: 20.0),
               ),
             ),
           ),

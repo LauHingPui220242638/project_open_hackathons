@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:frontend/env.dart' as env;
 
@@ -28,7 +30,7 @@ class _ChatAppState extends State<ChatApp> {
   late bool _isTapOn = true;
   late PageController _pageController;
   late List<Widget> bodyItems;
-  
+
   @override
   void initState() {
     super.initState();
@@ -53,6 +55,7 @@ class _ChatAppState extends State<ChatApp> {
     int _lastTap = DateTime.now().millisecondsSinceEpoch;
     final mHeight = MediaQuery.of(context).size.height;
     final mWidth = MediaQuery.of(context).size.width;
+    final bBound = min(mHeight, mWidth)/2.5;
     return MaterialApp(
         title: 'EventChat',
         theme: ThemeData(
@@ -75,12 +78,13 @@ class _ChatAppState extends State<ChatApp> {
                 _lastTap = DateTime.now().millisecondsSinceEpoch;
                 _isTapOn = true;
               }),
-              
               onHorizontalDragEnd: (details) => {
-                if (_isTapOn && DateTime.now().millisecondsSinceEpoch - _lastTap < 1000)
+                if (_isTapOn &&
+                    DateTime.now().millisecondsSinceEpoch - _lastTap < 1000)
                   {
-                    
-                    setState(() { _isTapOn = false;}),
+                    setState(() {
+                      _isTapOn = false;
+                    }),
                     if ((details.primaryVelocity ?? 0) < 0)
                       {
                         if (_currentIndex != bodyItems.length - 1)
@@ -130,7 +134,6 @@ class _ChatAppState extends State<ChatApp> {
             floatingActionButtonLocation: _currentIndex == 0
                 ? FloatingActionButtonLocation.centerFloat
                 : FloatingActionButtonLocation.endFloat,
-
             floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
             floatingActionButton: AnimatedCrossFade(
               crossFadeState: _currentIndex == 0
@@ -139,14 +142,12 @@ class _ChatAppState extends State<ChatApp> {
               duration: Duration(milliseconds: 500),
               firstChild: Center(
                 child: SubmitButton(
-                    buttonHeight: mWidth / 2, buttonWidth: mWidth / 2),
+                    buttonHeight: bBound, buttonWidth: bBound),
               ),
               secondChild: SubmitButton(
                 buttonHeight: 80.0,
                 buttonWidth: 80.0,
               ),
-            )
-          )
-        );
+            )));
   }
 }

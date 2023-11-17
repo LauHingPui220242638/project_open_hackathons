@@ -29,11 +29,14 @@ class GMapState extends State<GMap> {
     final x = widget.coordinates[0];
     final y = widget.coordinates[1];
     final z = widget.coordinates[2];
-    return Padding(
+    return Container(
+      margin: const EdgeInsets.only(top:10),
       padding: const EdgeInsets.all(2.0),
       child: SizedBox(
           height: MediaQuery.of(context).size.height * 0.3,
+          
           child: ClipRRect(
+            
             borderRadius:  const BorderRadius.all(Radius.circular(ROUNDED_CORNER_GLOBAL)),
             child: GoogleMap(
               
