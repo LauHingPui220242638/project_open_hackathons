@@ -55,3 +55,9 @@ resource "google_service_account" "gcloudfunc-chatbot-account" {
   account_id = "${var.name}-sa"
   display_name = "ChatBot Service Account for ${var.name}"
 }
+
+resource "google_project_iam_member" "gcloudfunc-chatbot_policy_role" {
+  project = var.project
+  role    = "roles/aiplatform.user"
+  member  = "serviceAccount:${google_service_account.gcloudfunc-chatbot-account.email}"
+}

@@ -39,10 +39,23 @@ class _DialogBoxState extends State<DialogBox> with AutomaticKeepAliveClientMixi
       fit: BoxFit.scaleDown,
       child: Container(
         padding: const EdgeInsets.all(15),
-        margin: EdgeInsets.all(mWdith * 0.01),
+        margin: EdgeInsets.all(10),
         constraints: BoxConstraints(maxWidth: mWdith * 0.8),
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(ROUNDED_CORNER_GLOBAL)),
+        decoration: userId == "AI" ? const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(ROUNDED_CORNER_GLOBAL),
+            topRight: Radius.circular(ROUNDED_CORNER_GLOBAL),
+            bottomLeft: Radius.circular(ROUNDED_CORNER_GLOBAL),
+            bottomRight: Radius.zero,
+          ),
+          color: Colors.indigo,
+        ):const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(ROUNDED_CORNER_GLOBAL),
+            topRight: Radius.circular(ROUNDED_CORNER_GLOBAL),
+            bottomLeft: Radius.zero,
+            bottomRight: Radius.circular(ROUNDED_CORNER_GLOBAL),
+          ),
           color: Colors.indigo,
         ),
         child: Column(

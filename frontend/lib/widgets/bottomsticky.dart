@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Sticky extends StatefulWidget {
-  const Sticky({Key? key}) : super(key: key);
+class MainHome extends StatefulWidget {
+  const MainHome({Key? key}) : super(key: key);
 
   @override
-  _StickyState createState() => _StickyState();
+  _MainHomeState createState() => _MainHomeState();
 }
 
-
-class _StickyState extends State<Sticky> {
+class _MainHomeState extends State<MainHome> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

@@ -7,7 +7,14 @@ import 'package:speech_to_text/speech_to_text.dart';
 import 'package:frontend/api/chatcall.dart' as chatcall;
 
 class SubmitButton extends StatefulWidget {
-  const SubmitButton({Key? key}) : super(key: key);
+  final double buttonHeight;
+  final double buttonWidth;
+
+  const SubmitButton({
+    Key? key,
+    required this.buttonHeight,
+    required this.buttonWidth,
+  }) : super(key: key);
 
   @override
   State<SubmitButton> createState() => _SubmitButtonState();
@@ -20,15 +27,12 @@ class _SubmitButtonState extends State<SubmitButton> {
   late final scrollController = chatboxState.scrollController;
   SpeechToText _speechToText = SpeechToText();
   bool _speechEnabled = false;
-  
+
   void initState() {
     super.initState();
     initSpeech();
-
-    
   }
 
-  
   final Icon buttonLPR = const Icon(
     Icons.record_voice_over,
     color: Colors.pink,
@@ -47,10 +51,6 @@ class _SubmitButtonState extends State<SubmitButton> {
 
   void Function()? textSubmit() {
     print("adding item");
-    
-    
-    
-   
 
     chatcall.ask(
       state: chatboxState,
@@ -60,16 +60,14 @@ class _SubmitButtonState extends State<SubmitButton> {
     textcontroller.clear();
     return null;
   }
-  
-  
-  
+
   void initSpeech() async {
     _speechEnabled = await _speechToText.initialize();
+    print(_speechEnabled);
     setState(() {});
   }
-  
+
   void startListening() async {
-    
     await _speechToText.listen(onResult: onSpeechResult);
     setState(() {
       _speechEnabled = true;
@@ -88,9 +86,10 @@ class _SubmitButtonState extends State<SubmitButton> {
       _button = buttonLUP;
     });
     textSubmit();
-  }  
+  }
+
   void onSpeechResult(SpeechRecognitionResult result) {
-    if (_speechEnabled == true){
+    if (_speechEnabled == true) {
       setState(() {
         textcontroller.text = result.recognizedWords;
       });
@@ -113,9 +112,15 @@ class _SubmitButtonState extends State<SubmitButton> {
         print("Long Pressed Up!!");
         stopListening();
       },
-      child: FloatingActionButton(
-        onPressed: textSubmit,
-        child: _button,
+      child: Container(
+        height: widget.buttonHeight,
+        width: widget.buttonWidth,
+        child: FittedBox(
+          child: FloatingActionButton(
+            onPressed: textSubmit,
+            child: _button,
+          ),
+        ),
       ),
     );
   }

@@ -1,5 +1,7 @@
-# curl -m 70 -X POST https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net/gcloudfunc-chatbot \
-curl -m 70 -X POST https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net/gcloudfunc-chatbot-map \
+gcloudfunc="gcloudfunc-chatbot"
+gcloudfunc="gcloudfunc-chatbot-map"
+
+curl -m 70 -X POST https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net/$gcloudfunc \
 -H "Authorization: bearer $(gcloud auth print-identity-token)" \
 -H "Content-Type: application/json" \
 -d '{
@@ -10,3 +12,6 @@ curl -m 70 -X POST https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net
     "coordinates": [0.0,0.0,0.0]
   }
 }'
+
+
+
