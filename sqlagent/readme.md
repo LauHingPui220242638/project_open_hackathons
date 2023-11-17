@@ -15,3 +15,16 @@ curl -m 70 -X POST https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net
 -H "Content-Type: application/json" \
 -d '{"query": "What is the price of Single Journey - Adult? just check eng table"}'
 
+
+
+---
+caching:
+chat -> memorystore / firestore -> if exist: -> response
+		    else: for n agent:(agent -> save response to memorystore / firestore) -> response
+
+
+
+{
+  question:'abc',
+  response:'xyz',
+}
