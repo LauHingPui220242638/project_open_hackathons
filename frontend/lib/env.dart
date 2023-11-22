@@ -2,7 +2,7 @@ const stage = String.fromEnvironment('CHATBOT_FRONTEND_MODE', defaultValue: 'PRO
 
 
 String BACKEND_URL = "cloudrun-backend-qskzidtbhq-de.a.run.app";
-String API_KEY = "AIzaSyDaxF5on_M6SClhdMRn64TQsrvHUC3RfAc";
+String API_KEY = "AIzaSyDdhMPubp8gw0GIzVnGMzG7bAWAGNuvwlM";
 const double ROUNDED_CORNER_GLOBAL = 25.0;
 
 void initApp({String? stage}){

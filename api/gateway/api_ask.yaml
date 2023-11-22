@@ -19,7 +19,7 @@ paths:
   "/ask":
     post:
       x-google-backend:
-        address: https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net/gcloudfunc-chatbot-map
+        address: https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net/gcloudfunc-chatbot
       description: "Get map by asking ChatBot."
       operationId: "ask-map"
       parameters:
@@ -51,10 +51,10 @@ paths:
         "500":
           description: Internal Server Error
                 
-  "/ask-chatbot":
+  "/ask-map":
     post:
       x-google-backend:
-        address: https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net/gcloudfunc-chatbot
+        address: https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net/gcloudfunc-chatbot-map	
       description: "Get answer by asking ChatBot."
       operationId: "ask-chatbot"
       parameters:

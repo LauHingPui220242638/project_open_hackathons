@@ -1,7 +1,7 @@
+backend=http://localhost:8080
 backend=https://cloudrun-backend-qskzidtbhq-de.a.run.app
 
-# backend=http://localhost:8080
-api_key=AIzaSyDaxF5on_M6SClhdMRn64TQsrvHUC3RfAc
+api_key=AIzaSyDdhMPubp8gw0GIzVnGMzG7bAWAGNuvwlM
 curl -X 'POST' \
   "${backend}/ask?api_key=${api_key}" \
   -H 'accept: application/json' \
