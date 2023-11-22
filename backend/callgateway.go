@@ -7,7 +7,9 @@ import (
     "encoding/json"
 )
 
-func AskChatbot(ask Call, apikey string) (Call, error){
+KeyWords 
+
+func AskChatbot(ask Call, path string, apikey string) (Call, error){
 	var ans Call
 	
 
@@ -15,7 +17,7 @@ func AskChatbot(ask Call, apikey string) (Call, error){
 	// data.Set("name", "foo")
 	// data.Set("surname", "bar")
 	
-	apiurl := urlTemplate(GATEWAY_URL, "/ask", apikey)
+	apiurl := urlTemplate(GATEWAY_URL, path, apikey)
 	
 	
 	requestBodyBytes, err := json.Marshal(ask)

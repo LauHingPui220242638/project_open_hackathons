@@ -21,7 +21,7 @@ paths:
       x-google-backend:
         address: https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net/gcloudfunc-chatbot
       description: "Get map by asking ChatBot."
-      operationId: "ask-map"
+      operationId: "ask"
       parameters:
         - name: body
           in: body
@@ -55,8 +55,8 @@ paths:
     post:
       x-google-backend:
         address: https://asia-east1-fyp-open-data-hackathon.cloudfunctions.net/gcloudfunc-chatbot-map	
-      description: "Get answer by asking ChatBot."
-      operationId: "ask-chatbot"
+      description: "Get answer by asking ChatBot Map."
+      operationId: "ask-map"
       parameters:
         - name: body
           in: body
