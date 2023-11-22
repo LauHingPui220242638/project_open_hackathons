@@ -7,9 +7,8 @@ import (
     "encoding/json"
 )
 
-KeyWords 
 
-func AskChatbot(ask Call, path string, apikey string) (Call, error){
+func AskChatbot(ask Call, UrlPath string, apikey string) (Call, error){
 	var ans Call
 	
 
@@ -17,7 +16,7 @@ func AskChatbot(ask Call, path string, apikey string) (Call, error){
 	// data.Set("name", "foo")
 	// data.Set("surname", "bar")
 	
-	apiurl := urlTemplate(GATEWAY_URL, path, apikey)
+	apiurl := urlTemplate(GATEWAY_URL, UrlPath, apikey)
 	
 	
 	requestBodyBytes, err := json.Marshal(ask)
@@ -43,9 +42,9 @@ func AskChatbot(ask Call, path string, apikey string) (Call, error){
 
 
 
-func urlTemplate(domain string, path string, api_key string) string  {
+func urlTemplate(domain string, UrlPath string, api_key string) string  {
 	u, _ := url.ParseRequestURI(domain)
-	u.Path = path
+	u.Path = UrlPath
 	q := u.Query()
 	q.Add("api_key", api_key)
 	u.RawQuery = q.Encode()

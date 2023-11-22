@@ -4,12 +4,12 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"path"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
 
-KeyWords := []string{"門診", "覆診", "小學"}
+var keywords = []string{"門診", "覆診", "小學"}
 
 func wordInString(word string, str string) bool {
 	return strings.Contains(str, word)
@@ -46,21 +46,21 @@ func main() {
 		}
 		
 		api_key := c.Query("api_key")
-		var path string 
+		var UrlPath string 
 		
-		path = "/ask"
+		UrlPath = "/ask"
 		
 		// testing for map or general
-		for _, word := range KeyWords {
+		for _, word := range keywords {
 			if wordInString(word, askcall.Data.Chat) {
-				path = "/ask-map"
+				UrlPath = "/ask-map"
 				
 			}
 		}
 		
 		
 		
-		anscall, err := AskChatbot(askcall, path, api_key)
+		anscall, err := AskChatbot(askcall, UrlPath, api_key)
 		if err != nil {
 			c.Error(err)
 			c.Abort()
