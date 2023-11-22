@@ -1,61 +1,4 @@
-import json
 import functions_framework
-
-import vertexai
-import geopandas as gpd
-
-from langchain.llms import VertexAI
-from langchain.agents import create_pandas_dataframe_agent
-from langchain import PromptTemplate, LLMChain
-from langchain.memory import ConversationBufferMemory
-
-
-def LLM_init():
-    template = """
-    You have some ferry stop geojson file. 
-    You must list the location and Google Maps url of each ferry stop.
-    Only return the coordinates in the json structure.
-    {chat_history}
-        Human: {human_input}
-        Chatbot:"""
-
-    prompt_for_llm = PromptTemplate(template=template, input_variables=["chat_history","human_input"])
-    memory = ConversationBufferMemory(memory_key="chat_history")
-    vertex_ai_model = VertexAI()
-
-    llm_chain = LLMChain(
-        prompt=prompt_for_llm, 
-        llm=vertex_ai_model, 
-        memory=memory, 
-        verbose=True
-            )
-    return llm_chain
-
-
-def mtr_agent():
-
-    path = 'mtr.geojson'
-    
-    mtr = gpd.read_file(path)
-        
-    llm_chain = LLM_init()
-    vertex_ai_model = VertexAI(
-        model_name='text-bison-32k',
-        llm_chain=llm_chain,
-        max_output_tokens=500,
-        temperature=0.3,
-        top_p=0.8,
-        top_k=40
-    )
-    
-    agent = create_pandas_dataframe_agent(vertex_ai_model, mtr, verbose=True,max_execution_time=20,)
-
-    result = agent.run('Please list the coordinates of 1 mtr station. Return JSON format. You must like this [65.453, 92.344 , 12.2]')
-
-    return result
-
-
-
 
 @functions_framework.http
 def ask(request):
@@ -71,20 +14,32 @@ def ask(request):
     request_json = request.get_json(silent=True)
     request_args = request.args
 
-    data = mtr_agent()
-
-    dataDict = json.loads(data)
-
-
-    response_data = {
+    query = request_json["data"]["chat"]
+    if '覆診' in query :
+      response_data = {
         "user_id": "AI",
         "data": {
-            "chat": "Here is a location for your reference!",
-            "kind": "map",
-            "coordinates": dataDict
+          "chat": "冇錯。你喺今日11點喺廣華醫院眼科門診有預約。由於現時交通擠塞，建議您乘坐地鐵到目的地。",
+          "kind": "map",
+          "coordinates": [22.3148608, 114.1707598, 17.75]
+          }
         }
-    }
-
-    response_json = json.dumps(response_data)
-
-    return response_json, 200, {'Content-Type': 'application/json'}
+    elif '替孩子申請' in query :
+      response_data = {
+        "user_id": "AI",
+        "data": {
+          "chat": "冇錯。你喺今日11點喺廣華醫院眼科門診有預約。由於現時交通擠塞，建議您乘坐地鐵到目的地。",
+          "kind": "map",
+          "coordinates": [22.3152394, 114.2252462, 19]
+          }
+        }
+    elif '有啲唔舒服' in query :
+      response_data = {
+        "user_id": "AI",
+        "data": {
+          "chat": "你可以到最近的民政事務處索取小一入學申請表，填妥後交到觀塘偉業街223號宏利金融中心2樓2室教育局學位分配組。以下是最近的民政事務處位置",
+          "kind": "map",
+          "coordinates": [22.3132469, 114.2212449, 18]
+          }
+        }
+    return response_data

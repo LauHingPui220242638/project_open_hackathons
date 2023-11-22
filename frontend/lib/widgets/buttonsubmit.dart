@@ -48,7 +48,7 @@ class _SubmitButtonState extends State<SubmitButton> {
   
   void _speak(chat) async {
     await flutterTts.setVolume(1.0);
-    await flutterTts.setSpeechRate(0.5);
+    await flutterTts.setSpeechRate(1.0);
     await flutterTts.setPitch(1.0);
     print(chat);
     if (chat != null) {
