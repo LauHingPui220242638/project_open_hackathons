@@ -38,8 +38,6 @@ class _SubmitButtonState extends State<SubmitButton> {
   initTts() {
     flutterTts = FlutterTts();
 
-    flutterTts.setLanguage("en-UK");
-
     _setAwaitOptions();
   }
   
@@ -48,14 +46,15 @@ class _SubmitButtonState extends State<SubmitButton> {
   }
   
   
-  Future _speak(chat) async {
+  void _speak(chat) async {
     await flutterTts.setVolume(1.0);
-    await flutterTts.setSpeechRate(1.0);
+    await flutterTts.setSpeechRate(0.5);
     await flutterTts.setPitch(1.0);
-
+    print(chat);
     if (chat != null) {
       if (chat!.isNotEmpty) {
-        await flutterTts.speak(chat!);
+        print(chat);
+        await flutterTts.speak(chat);
       }
     }
     else{
@@ -79,15 +78,15 @@ class _SubmitButtonState extends State<SubmitButton> {
 
   late Icon _button = buttonLUP;
 
-  void Function()? textSubmit() {
-    print("adding item");
+  Future<String> textSubmit() async {
 
-    final chat = chatcall.ask(
+    final chat = await chatcall.ask(
       state: chatboxState,
       user_id: user_id,
       chat: textcontroller.text,
     );
     textcontroller.clear();
+    print("adding chat : " + chat);
     return chat;
   }
 
@@ -109,14 +108,15 @@ class _SubmitButtonState extends State<SubmitButton> {
   /// Note that there are also timeouts that each platform enforces
   /// and the SpeechToText plugin supports setting timeouts on the
   /// listen method.
-  void stopListening() async {
+  Future stopListening() async {
     await _speechToText.stop();
     setState(() {
       _speechEnabled = false;
       _button = buttonLUP;
     });
-    final chat = textSubmit();
+    final String chat = await textSubmit();
     _speak(chat);
+    
   }
 
   void onSpeechResult(SpeechRecognitionResult result) {
@@ -142,6 +142,7 @@ class _SubmitButtonState extends State<SubmitButton> {
       onLongPressUp: () {
         print("Long Pressed Up!!");
         stopListening();
+        
       },
       child: Container(
         height: widget.buttonHeight,
