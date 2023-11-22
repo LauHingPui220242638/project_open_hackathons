@@ -1,5 +1,26 @@
 import json
 import functions_framework
+import vertexai
+
+from vertexai.preview.language_models import TextGenerationModel
+
+def generationai_function(chat: str):
+    prompt = """Summarize the following conversation between a service rep and a customer in a few sentences. Use only the information from the conversation.
+    Response shloud only string, integer or float. For exmaple: 'Hello! Nice too meet you!'
+    """
+    
+    generation_model = TextGenerationModel.from_pretrained("text-bison-32k")
+
+    generation = generation_model.predict(
+            prompt=prompt,
+            max_output_tokens=256,
+            temperature=0.2,
+            top_p=0.8,
+            top_k=40
+        ).text
+        
+    response = generation_model.predict(chat)
+    return response.text
 
 
 @functions_framework.http
@@ -21,21 +42,15 @@ def ask(request):
     chat = data.get('chat')
     kind = data.get('kind')
     coordinates = data.get('coordinates')
-    answer = "I am Fine from Cloud Function"
-    
 
-    kind = "map"
-    coord_x : float = 22.195671
-    coord_y : float = 113.54797
-    coord_z : float = 16.0
-    coordinates : list[float] = [coord_x, coord_y, coord_z]
+    result = generationai_function(chat)
     
     response_data = {
         "user_id": "AI",
         "data": {
-            "chat": "Hello {}! you asked {} with kind {} and coordinates {}, I anwser {}".format(user_id, chat, kind, coordinates, answer),
-            "kind": kind,
-            "coordinates":  coordinates
+            "chat": result,
+            "kind": "text",
+            "coordinates":  [123.21, 13.2323, 12.2]
         }
     }
 

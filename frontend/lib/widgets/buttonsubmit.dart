@@ -5,11 +5,11 @@ import 'package:frontend/widgets/chatbox.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:frontend/api/chatcall.dart' as chatcall;
+import 'package:flutter_tts/flutter_tts.dart';
 
 class SubmitButton extends StatefulWidget {
   final double buttonHeight;
   final double buttonWidth;
-
   const SubmitButton({
     Key? key,
     required this.buttonHeight,
@@ -25,14 +25,44 @@ class _SubmitButtonState extends State<SubmitButton> {
   late final textcontroller = homestate.textcontroller;
   late ChatBoxState chatboxState = chatboxgkey.currentState!;
   late final scrollController = chatboxState.scrollController;
-  SpeechToText _speechToText = SpeechToText();
+  late SpeechToText _speechToText = SpeechToText();
+  late FlutterTts flutterTts;
   bool _speechEnabled = false;
 
   void initState() {
     super.initState();
     initSpeech();
+    initTts();
   }
 
+  initTts() {
+    flutterTts = FlutterTts();
+
+    flutterTts.setLanguage("en-UK");
+
+    _setAwaitOptions();
+  }
+  
+  Future _setAwaitOptions() async {
+    await flutterTts.awaitSpeakCompletion(true);
+  }
+  
+  
+  Future _speak(chat) async {
+    await flutterTts.setVolume(1.0);
+    await flutterTts.setSpeechRate(1.0);
+    await flutterTts.setPitch(1.0);
+
+    if (chat != null) {
+      if (chat!.isNotEmpty) {
+        await flutterTts.speak(chat!);
+      }
+    }
+    else{
+      throw Exception('Chat is Null');
+    }
+  }
+  
   final Icon buttonLPR = const Icon(
     Icons.record_voice_over,
     color: Colors.pink,
@@ -52,13 +82,13 @@ class _SubmitButtonState extends State<SubmitButton> {
   void Function()? textSubmit() {
     print("adding item");
 
-    chatcall.ask(
+    final chat = chatcall.ask(
       state: chatboxState,
       user_id: user_id,
       chat: textcontroller.text,
     );
     textcontroller.clear();
-    return null;
+    return chat;
   }
 
   void initSpeech() async {
@@ -85,7 +115,8 @@ class _SubmitButtonState extends State<SubmitButton> {
       _speechEnabled = false;
       _button = buttonLUP;
     });
-    textSubmit();
+    final chat = textSubmit();
+    _speak(chat);
   }
 
   void onSpeechResult(SpeechRecognitionResult result) {

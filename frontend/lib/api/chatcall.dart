@@ -22,6 +22,7 @@ ask(
 
     final userId = body['user_id'];
     final data = body['data'];
+    final chat = data['chat'];
     data['coordinates'] = (data['coordinates'] as List).map((item) => item as double).toList();
     state.addItemToList(userId, data);
     state.setScollingStart(true);
