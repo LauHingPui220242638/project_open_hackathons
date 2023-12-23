@@ -14,25 +14,23 @@ from langchain.tools import BaseTool, Tool
 from langchain.utilities import SerpAPIWrapper
 
 
-credential = "fyp-open-data-hackathon-7fccdf48c91c.json"
+credential = "shaped-storm-401909-adaff701b395.json"
 credential_subpath = os.path.join("secretes", credential)
 credential_path = os.path.join(os.path.dirname(os.getcwd()) ,credential_subpath  )
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credential_path
 
 
-PROJECT_ID = 'fyp-open-data-hackathon'
+PROJECT_ID = 'shaped-storm-401909'
 LOCATION = 'us-central1'
 vertexai.init(project=PROJECT_ID, location=LOCATION)
 
-
-
 st.title("🌿🌿Green man☘️☘️")
-
-
-
 model_selectbox = st.selectbox(
     'Choose a model',
     ('text-bison@001-Vertex AI', 'text-bison@001-Generative AI'))
+
+
+
 
 
 def LLM_init():
@@ -47,7 +45,7 @@ def LLM_init():
         Chatbot:"""
 
     prompt_for_llm = PromptTemplate(template=template, input_variables=["chat_history","human_input"])
-    memory = ConversationBufferMemory(memory_key="chat_history")
+    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     vertex_ai_model = VertexAI()
 
     llm_chain = LLMChain(
@@ -57,6 +55,7 @@ def LLM_init():
         verbose=True
             )
     return llm_chain
+
 
 def message_session():
     if "messages" not in st.session_state:
@@ -71,30 +70,28 @@ def vertexai_function():
     if prompt := st.chat_input("Talk to Vertex AI on Green man"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").markdown(prompt)
-        #memory = ConversationBufferMemory (memory_key="chat history")
-        #tools = [search()]
+        
+        path = "https://www.wastereduction.gov.hk/sites/default/files/wasteless07.csv"
+        data_file = pd.read_csv(path)
         llm_chain = LLM_init()
-        read = "https://www.wastereduction.gov.hk/sites/default/files/wasteless07.csv"
-        data_file = pd.read_csv(read)
         vertex_ai_model = VertexAI(
             model_name=model_name,
+            llm_chain=llm_chain,
             max_output_tokens=256,
             temperature=0.2,
-            top_p=0.8,
-            top_k=40
+            top_p=0.3,
+            verbose=True
         )
-        agent = create_pandas_dataframe_agent(vertex_ai_model, data_file, verbose=True)
-        response = agent.run(prompt)
         
-        #coordinate_query = "Tell me a coordinate."
-        #_input = prompt.format_prompt(query=coordinate_query)
-
-        #output = vertex_ai_model(_input.to_string())
-        #parser.parse(output)
+        agent = create_pandas_dataframe_agent(
+            vertex_ai_model,
+            data_file,
+            verbose=True
+        )
+        response = agent.run(prompt)
         with st.chat_message("assistant"):
             st.markdown(response)
         st.session_state.messages.append({"role": "ai", "content": response})
-        #st_callback = StreamlitCallbackHandler(st.container())
     return vertexai_function
 
 
@@ -109,12 +106,13 @@ def generationai_function():
     if prompt := st.chat_input("Talk to Generative AI on Green man"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").markdown(prompt)
+        #llm_chain = LLM_init()
         generation = generation_model.predict(
+            #llm_chain=llm_chain,
             prompt=prompt,
             max_output_tokens=256,
             temperature=0.2,
-            top_p=0.8,
-            top_k=40
+            top_p=0.3
         ).text
         with st.chat_message("assistant"):
             st.markdown(generation)
@@ -122,13 +120,11 @@ def generationai_function():
     return generationai_function
 
 
-
 if model_selectbox == 'text-bison@001-Vertex AI':
     model_name = "text-bison@001"
     message_session()
     vertexai_function()
 
-
 elif model_selectbox == 'text-bison@001-Generative AI':
-    generation_model = TextGenerationModel.from_pretrained("text-bison@001")
+    generation_model = TextGenerationModel.from_pretrained("text-bison-32k@002")
     generationai_function()

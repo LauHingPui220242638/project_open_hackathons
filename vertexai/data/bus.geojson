@@ -1,4 +1,4 @@
-﻿{
+{
 	"type": "FeatureCollection",
 	"features": [
 	  {
@@ -8,229 +8,183 @@
 		  "coordinates": [114.1585, 22.2813]
 		},
 		"properties": {
-		  "name": "Central Station",
-		  "google_map_url": "https://maps.google.com/?q=22.2813,114.1585"
+		  "routeId": 2000410,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2813,114.1585",
+		  "locStartNameE": "Cyberport",
+		  "locEndNameE": "Quarry Bay (Shipyard Lane) (Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000410",
+		  "stopNameE": "Cyberport Public Transport Interchange"
 		}
 	  },
 	  {
 		"type": "Feature",
 		"geometry": {
 		  "type": "Point",
-		  "coordinates": [114.1709, 22.3226]
+		  "coordinates": [114.1847, 22.2728]
 		},
 		"properties": {
-		  "name": "Mong Kok East Station",
-		  "google_map_url": "https://maps.google.com/?q=22.3226,114.1709"
+		  "routeId": 2000420,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2728,114.1847",
+		  "locStartNameE": "Kennedy Town",
+		  "locEndNameE": "North Point Ferry Pier (Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000420",
+		  "stopNameE": "Kennedy Town MTR Station"
 		}
 	  },
 	  {
 		"type": "Feature",
 		"geometry": {
 		  "type": "Point",
-		  "coordinates": [114.1719, 22.297]
+		  "coordinates": [114.2226, 22.2783]
 		},
 		"properties": {
-		  "name": "Tsim Sha Tsui Station",
-		  "google_map_url": "https://maps.google.com/?q=22.297,114.1719"
+		  "routeId": 2000430,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2783,114.2226",
+		  "locStartNameE": "Central (Exchange Square)",
+		  "locEndNameE": "Causeway Bay (Tin Hau) (Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000430",
+		  "stopNameE": "Central (Exchange Square)"
 		}
 	  },
 	  {
 		"type": "Feature",
 		"geometry": {
 		  "type": "Point",
-		  "coordinates": [114.1849, 22.2805]
+		  "coordinates": [114.1913, 22.2791]
 		},
 		"properties": {
-		  "name": "Causeway Bay Station",
-		  "google_map_url": "https://maps.google.com/?q=22.2805,114.1849"
+		  "routeId": 2000440,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2791,114.1913",
+		  "locStartNameE": "Sheung Wan",
+		  "locEndNameE": "Happy Valley (Lower Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000440",
+		  "stopNameE": "Sheung Wan MTR Station"
 		}
 	  },
 	  {
 		"type": "Feature",
 		"geometry": {
 		  "type": "Point",
-		  "coordinates": [114.1726, 22.2771]
+		  "coordinates": [114.1766, 22.2767]
 		},
 		"properties": {
-		  "name": "Wan Chai Station",
-		  "google_map_url": "https://maps.google.com/?q=22.2771,114.1726"
+		  "routeId": 2000450,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2767,114.1766",
+		  "locStartNameE": "Sai Ying Pun",
+		  "locEndNameE": "Central (Exchange Square) (Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000450",
+		  "stopNameE": "Sai Ying Pun MTR Station"
 		}
 	  },
 	  {
 		"type": "Feature",
 		"geometry": {
 		  "type": "Point",
-		  "coordinates": [114.1649, 22.2783]
+		  "coordinates": [114.1672, 22.3145]
 		},
 		"properties": {
-		  "name": "Admiralty Station",
-		  "google_map_url": "https://maps.google.com/?q=22.2783,114.1649"
+		  "routeId": 2000460,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.3145,114.1672",
+		  "locStartNameE": "Sham Shui Po",
+		  "locEndNameE": "Kowloon Tong (Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000460",
+		  "stopNameE": "Sham Shui Po MTR Station"
+		}
+	},
+	{
+	"type": "FeatureCollection",
+	"features": [
+	  {
+		"type": "Feature",
+		"geometry": {
+		  "type": "Point",
+		  "coordinates": [114.1585, 22.2813]
+		},
+		"properties": {
+		  "routeId": 2000410,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2813,114.1585",
+		  "locStartNameE": "Cyberport",
+		  "locEndNameE": "Quarry Bay (Shipyard Lane) (Circular)",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000410",
+		  "stopNameE": "Cyberport Public Transport Interchange"
 		}
 	  },
 	  {
 		"type": "Feature",
 		"geometry": {
 		  "type": "Point",
-		  "coordinates": [114.2043, 22.2889]
+		  "coordinates": [114.1234, 22.3456]
 		},
 		"properties": {
-		  "name": "North Point Station",
-		  "google_map_url": "https://maps.google.com/?q=22.2889,114.2043"
+		  "routeId": 2000420,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.3456,114.1234",
+		  "locStartNameE": "Central",
+		  "locEndNameE": "Tsim Sha Tsui",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000420",
+		  "stopNameE": "Central Station"
 		}
 	  },
 	  {
 		"type": "Feature",
 		"geometry": {
 		  "type": "Point",
-		  "coordinates": [114.1494, 22.2856]
+		  "coordinates": [114.1567, 22.3201]
 		},
 		"properties": {
-		  "name": "Sheung Wan Station",
-		  "google_map_url": "https://maps.google.com/?q=22.2856,114.1494"
+		  "routeId": 2000430,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.3201,114.1567",
+		  "locStartNameE": "Mong Kok",
+		  "locEndNameE": "Causeway Bay",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000430",
+		  "stopNameE": "Mong Kok Station"
 		}
 	  },
 	  {
 		"type": "Feature",
 		"geometry": {
 		  "type": "Point",
-		  "coordinates": [114.1698, 22.3131]
+		  "coordinates": [114.1889, 22.3190]
 		},
 		"properties": {
-		  "name": "Yau Ma Tei Station",
-		  "google_map_url": "https://maps.google.com/?q=22.3131,114.1698"
+		  "routeId": 2000440,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.3190,114.1889",
+		  "locStartNameE": "Wan Chai",
+		  "locEndNameE": "Central",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000440",
+		  "stopNameE": "Wan Chai MTR Station"
 		}
 	  },
 	  {
 		"type": "Feature",
 		"geometry": {
 		  "type": "Point",
-		  "coordinates": [114.1717, 22.3045]
+		  "coordinates": [114.1733, 22.2819]
 		},
 		"properties": {
-		  "name": "Jordan Station",
-		  "google_map_url": "https://maps.google.com/?q=22.3045,114.1717"
+		  "routeId": 2000450,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2819,114.1733",
+		  "locStartNameE": "Sheung Wan",
+		  "locEndNameE": "Stanley",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000450",
+		  "stopNameE": "Sheung Wan MTR Station"
 		}
 	  },
 	  {
 		"type": "Feature",
 		"geometry": {
 		  "type": "Point",
-		  "coordinates": [114.1281, 22.2857]
+		  "coordinates": [114.2020, 22.2763]
 		},
 		"properties": {
-		  "name": "Kennedy Town Station",
-		  "google_map_url": "https://maps.google.com/?q=22.2857,114.1281"
-		}
-	  },
-	  {
-		"type": "Feature",
-		"geometry": {
-		  "type": "Point",
-		  "coordinates": [114.1927, 22.2822]
-		},
-		"properties": {
-		  "name": "Tin Hau Station",
-		  "google_map_url": "https://maps.google.com/?q=22.2822,114.1927"
-		}
-	  },
-	  {
-		"type": "Feature",
-		"geometry": {
-		  "type": "Point",
-		  "coordinates": [114.1954, 22.289]
-		},
-		"properties": {
-		  "name": "Fortress Hill Station",
-		  "google_map_url": "https://maps.google.com/?q=22.289,114.1954"
-		}
-	  },
-	  {
-		"type": "Feature",
-		"geometry": {
-		  "type": "Point",
-		  "coordinates": [114.1426, 22.2866]
-		},
-		"properties": {
-		  "name": "Sai Ying Pun Station",
-		  "google_map_url": "https://maps.google.com/?q=22.2866,114.1426"
-		}
-	  },
-	  {
-		"type": "Feature",
-		"geometry": {
-		  "type": "Point",
-		  "coordinates": [114.1505, 22.3367]
-		},
-		"properties": {
-		  "name": "Cheung Sha Wan",
-		  "google_map_url": "https://maps.google.com/?q=22.3367,114.1505"
-		}
-	  },
-	  {
-		"type": "Feature",
-		"geometry": {
-		  "type": "Point",
-		  "coordinates": [114.1535, 22.3376]
-		},
-		"properties": {
-		  "name": "Lai Chi Kok Station",
-		  "google_map_url": "https://maps.google.com/?q=22.3376,114.1535"
-		}
-	  },
-	  {
-		"type": "Feature",
-		"geometry": {
-		  "type": "Point",
-		  "coordinates": [114.1595, 22.3304]
-		},
-		"properties": {
-		  "name": "Sham Shui Po Station",
-		  "google_map_url": "https://maps.google.com/?q=22.3304,114.1595"
-		}
-	  },
-	  {
-		"type": "Feature",
-		"geometry": {
-		  "type": "Point",
-		  "coordinates": [114.1694, 22.3193]
-		},
-		"properties": {
-		  "name": "Mong Kok Station",
-		  "google_map_url": "https://maps.google.com/?q=22.3193,114.1694"
-		}
-	  },
-	  {
-		"type": "Feature",
-		"geometry": {
-		  "type": "Point",
-		  "coordinates": [114.1142, 22.3687]
-		},
-		"properties": {
-		  "name": "Tsuen Wan West Station",
-		  "google_map_url": "https://maps.google.com/?q=22.3687,114.1142"
-		}
-	  },
-	  {
-		"type": "Feature",
-		"geometry": {
-		  "type": "Point",
-		  "coordinates": [114.2579, 22.3019]
-		},
-		"properties": {
-		  "name": "Yau Tong Station",
-		  "google_map_url": "https://maps.google.com/?q=22.3019,114.2579"
-		}
-	  },
-	  {
-		"type": "Feature",
-		"geometry": {
-		  "type": "Point",
-		  "coordinates": [114.2102, 22.3422]
-		},
-		"properties": {
-		  "name": "Diamond Hill Station",
-		  "google_map_url": "https://maps.google.com/?q=22.3422,114.2102"
+		  "routeId": 2000460,
+		  "GoogleMapUrl": "https://maps.google.com/?q=22.2763,114.2020",
+		  "locStartNameE": "Causeway Bay",
+		  "locEndNameE": "Kowloon City",
+		  "hyperlinkE": "https://h2-app-rr.hkemobility.gov.hk/ris_page/get_gmb_detail.php?lang=EN&route_id=2000460",
+		  "stopNameE": "Causeway Bay Station"
 		}
 	  }
 	]
-  }
+	}
+	]
+}

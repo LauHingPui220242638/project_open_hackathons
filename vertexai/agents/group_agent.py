@@ -100,8 +100,33 @@ def minibus_agent():
     agent = create_pandas_dataframe_agent(vertex_ai_model, minibus, verbose=True)
     result = agent.run('Please describe the coordinates and Google URL of 5 location. It needs to be expressed in complete sentences.')
     return result
-    
-def vertexai_agent():
-    
-    llm_chain = LLM_init()
 
+
+
+
+bus = bus_agent()
+ferry = ferry_agent()
+
+llm = LLM_init()
+
+tools = [
+    Tool(
+        name="bus data",
+        func=bus.run,
+        description="useful for when you need to answer questions about current events. You should ask targeted questions",
+    ),
+    Tool(
+        name="ferry data",
+        func=ferry.run,
+        description="useful for when you need to answer questions about current events. You should ask targeted questions",
+    ),
+]
+
+agent = initialize_agent(
+    tools,
+    llm,
+    agent=AgentType,
+    verbose=True,
+)
+
+print(agent.run("hi"))

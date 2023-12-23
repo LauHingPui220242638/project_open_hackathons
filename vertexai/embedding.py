@@ -19,5 +19,4 @@ bus_queries = bus[bus.geometry, bus.locStartNameE, bus.stopNameE]
 
 agent = VertexAIEmbeddings(bus_queries, verbose=True)
 
-
 print(agent)

@@ -12,17 +12,15 @@ from langchain import PromptTemplate, LLMChain
 from langchain.memory import ConversationBufferMemory
 
 
-
-credential = "/workspaces/project_open_hackathons/secretes/fyp-open-data-hackathon-7fccdf48c91c.json"
+credential = "/workspaces/project_open_hackathons/secretes/shaped-storm-401909-adaff701b395.json"
 credential_subpath = os.path.join("secretes", credential)
 credential_path = os.path.join(os.path.dirname(os.getcwd()) ,credential_subpath  )
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credential_path
 os.environ["GPLACES_API_KEY"] = './secretes/map_api_key.txt'
 
-PROJECT_ID = 'fyp-open-data-hackathon'
+PROJECT_ID = 'shaped-storm-401909'
 LOCATION = 'us-central1'
 vertexai.init(project=PROJECT_ID, location=LOCATION)
-
 
 
 def LLM_init():
@@ -36,7 +34,7 @@ def LLM_init():
         Chatbot:"""
 
     prompt_for_llm = PromptTemplate(template=template, input_variables=["chat_history","human_input"])
-    memory = ConversationBufferMemory(memory_key="chat_history")
+    memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
     vertex_ai_model = VertexAI()
 
     llm_chain = LLMChain(
@@ -50,7 +48,7 @@ def LLM_init():
 
 
 def ferry_agent():
-    path = './vertexai/data/ferry.geojson'
+    path = './data/ferry.geojson'
     
     ferry = gpd.read_file(path)
         
@@ -60,8 +58,8 @@ def ferry_agent():
         llm_chain=llm_chain,
         max_output_tokens=500,
         temperature=0.3,
-        top_p=0.8,
-        top_k=40
+        top_p=0.3,
+        verbose=True
     )
     
     agent = create_pandas_dataframe_agent(vertex_ai_model, ferry, verbose=True,)
@@ -71,17 +69,10 @@ def ferry_agent():
 
 agent_ferry = ferry_agent()
 
-
-
-
-
-
 test_data_json_en = json.loads(agent_ferry.encode('utf-8'))
 
 start = test_data_json_en['data'][0]['coordinates']
 
-
 print(start)
 print(type(start))
-#print(test_data_json_en['coordinates'])
-
+print(test_data_json_en['coordinates'])
