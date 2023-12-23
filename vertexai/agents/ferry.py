@@ -49,30 +49,19 @@ def LLM_init():
 
 def ferry_agent():
     path = './data/ferry.geojson'
-    
     ferry = gpd.read_file(path)
-        
     llm_chain = LLM_init()
     vertex_ai_model = VertexAI(
         model_name='text-bison-32k',
         llm_chain=llm_chain,
-        max_output_tokens=500,
-        temperature=0.3,
-        top_p=0.3,
+        max_output_tokens=1000,
+        temperature=0,
+        top_p=0.1,
         verbose=True
     )
-    
     agent = create_pandas_dataframe_agent(vertex_ai_model, ferry, verbose=True,)
-    result = agent.run('Please list on coordinates of 1 ferry stops.')
-
+    result = agent.run('Please use complete sentences to list and describe 10 ferry informations.')
     return result
 
-agent_ferry = ferry_agent()
 
-test_data_json_en = json.loads(agent_ferry.encode('utf-8'))
-
-start = test_data_json_en['data'][0]['coordinates']
-
-print(start)
-print(type(start))
-print(test_data_json_en['coordinates'])
+print(ferry_agent())

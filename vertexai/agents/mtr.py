@@ -1,8 +1,6 @@
-import json
 import os
 import vertexai
 import geopandas as gpd
-from pathlib import Path
 
 from langchain.llms import VertexAI
 from langchain.agents import create_pandas_dataframe_agent
@@ -18,45 +16,42 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credential_path
 
 def LLM_init():
     template = """
-    You have about bus station geojson file. 
-    You must find the location and Google Maps url of each bus station.
+    You have about mtr station geojson file. 
+    You must find out name, coordinates and google_map_url of each mtr station data, then query the data.
     {chat_history}
         Human: {human_input}
         Chatbot:"""
 
     prompt_for_llm = PromptTemplate(template=template, input_variables=["chat_history","human_input"])
     memory = ConversationBufferMemory(memory_key="chat_history")
-    vertex_ai_model = VertexAI()
+    llm = VertexAI(model_name="text-bison-32k")
 
     llm_chain = LLMChain(
         prompt=prompt_for_llm, 
-        llm=vertex_ai_model, 
+        llm=llm, 
         memory=memory, 
         verbose=True
-            )
+    )
     return llm_chain
 
-
 def mtr_agent():
-
-    file_path = './data/bus.geojson'
-
+    file_path = './data/mtr.geojson'
     data = gpd.read_file(file_path)
-    
     llm_chain = LLM_init()
     vertex_ai_model = VertexAI(
-        model_name='text-bison-32k',
         llm_chain=llm_chain,
-        max_output_tokens=1000,
+        max_output_tokens=256,
         temperature=0.1,
-        top_p=0.3
+        top_p=0.2,
     )
     
-    agent = create_pandas_dataframe_agent(vertex_ai_model, data, verbose=True,)
-
-    result = agent.run("Where are mtr? Give me three option.")
+    agent = create_pandas_dataframe_agent(
+        vertex_ai_model,
+        data,
+        verbose=True
+    )
+    result = agent.run('query 3 coordinates about mtr station')
     return result
-
-#path_dict = './data/bus.geojson', './data/ferry.geojson'
-#good = mtr_agent(path = path_dict)
+    
+    
 print(mtr_agent())

@@ -1,7 +1,11 @@
-import json
 import vertexai
 import os
-from vertexai.preview.language_models import TextGenerationModel
+
+from langchain.llms import VertexAI
+from langchain.memory import ConversationBufferMemory
+from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate
+
 
 credential = "/workspaces/project_open_hackathons/secretes/shaped-storm-401909-adaff701b395.json"
 credential_subpath = os.path.join("secretes", credential)
@@ -9,22 +13,25 @@ credential_path = os.path.join(os.path.dirname(os.getcwd()) ,credential_subpath 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credential_path
 
 
-def generationai_function():
-    prompt = """Summarize the following conversation between a service rep and a customer in a few sentences. 
-    Use only the information from the conversation.
-    """
-    
-    generation_model = TextGenerationModel.from_pretrained("text-bison-32k")
+template = """You are a chatbot having a conversation with a human.
+{chat_history}
+Human: {human_input}
+Chatbot:"""
 
-    generation = generation_model.predict(
-        prompt=prompt,
-        max_output_tokens=256,
-        temperature=0.2,
-        top_p=0.3
-    ).text
-        
-    response = generation_model.predict('What is food?')
-    return response.text
+prompt = PromptTemplate(
+    input_variables=["chat_history", "human_input"], template=template
+)
+memory = ConversationBufferMemory(memory_key="chat_history")
 
-result = generationai_function()
-print(result)
+llm = VertexAI(model_name="text-bison-32k")
+llm_chain = LLMChain(
+    llm=llm,
+    prompt=prompt,
+    verbose=True,
+    memory=memory,
+)
+
+llm_chain.predict(human_input="Hi my name is John")
+llm_chain.predict(human_input="What is my name?")
+output = llm_chain.predict(human_input="What is food?")
+print(output)
