@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/main.dart';
 import 'package:frontend/pages/pagehome.dart';
@@ -80,12 +81,33 @@ class _SubmitButtonState extends State<SubmitButton> {
 
   Future<String> textSubmit() async {
     String text = textcontroller.text;
+    String kind = "text";
+    var chat;
+    var image;
+    if (text.isEmpty) {
+      print("empty text");
+      return "";
+    }
+    if (text.contains("according to image") || text.contains("根據圖片")) {
+      image = await FilePicker.platform.pickFiles(type: FileType.image);
+      if (image!.count <= 0) {
+        print("pick nothing");
+        return "";
+      }
+      print("picked count" + image.count.toString());
+      kind = "image";
+    }
     textcontroller.clear();
-    final chat = await chatcall.ask(
+    chat = await chatcall.ask(
       state: chatboxState,
       user_id: user_id,
-      chat: text,
+      inputdata: {
+        "chat": text,
+        "kind": kind,
+        "image":image
+      },
     );
+    
     print("adding chat : " + chat);
     return chat;
   }

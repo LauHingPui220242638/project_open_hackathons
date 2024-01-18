@@ -39,7 +39,10 @@ class PageHomeState extends State<PageHome> with AutomaticKeepAliveClientMixin<P
           chatcall.ask(
             state: state,
             user_id: user_id,
-            chat: chat,
+            inputdata: {
+              "chat": chat,
+              "kind": "text",
+            }
           );
           textcontroller.clear();
           return KeyEventResult.handled;

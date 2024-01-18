@@ -7,16 +7,15 @@ import 'dart:convert';
 ask(
     {required chatbox.ChatBoxState state,
     required String user_id,
-    required String chat}) async {
+     required Map<String, dynamic> inputdata,
+    }) async {
       
-  if (chat.contains("image below")){
-    var picked = await FilePicker.platform.pickFiles(type: FileType.image);
-    if (picked == null) return;
-    state.addItemToList( user_id,{"chat":chat,"kind": "image","image":picked});
-  }else{
-    state.addItemToList( user_id,{"chat":chat,"kind": "text"});
-  }
-
+  String chat = inputdata['chat'];
+  String kind = inputdata['kind'];
+  FilePickerResult? image = inputdata['image'];
+  
+  state.addItemToList( user_id,{"chat":chat,"kind": kind, "image":image});
+  
   final data = callTemplate(user_id,chat);
   final response = await callPost(env.BACKEND_URL,'/ask',data);
 
