@@ -80,12 +80,12 @@ class _SubmitButtonState extends State<SubmitButton> {
 
   Future<String> textSubmit() async {
 
+    textcontroller.clear();
     final chat = await chatcall.ask(
       state: chatboxState,
       user_id: user_id,
       chat: textcontroller.text,
     );
-    textcontroller.clear();
     print("adding chat : " + chat);
     return chat;
   }
