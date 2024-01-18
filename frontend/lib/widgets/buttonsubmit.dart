@@ -79,12 +79,12 @@ class _SubmitButtonState extends State<SubmitButton> {
   late Icon _button = buttonLUP;
 
   Future<String> textSubmit() async {
-
+    String text = textcontroller.text;
     textcontroller.clear();
     final chat = await chatcall.ask(
       state: chatboxState,
       user_id: user_id,
-      chat: textcontroller.text,
+      chat: text,
     );
     print("adding chat : " + chat);
     return chat;
