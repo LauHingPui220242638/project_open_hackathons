@@ -84,19 +84,14 @@ class ChatBoxState extends State<ChatBox> {
           // padding: const EdgeInsets.all(8),
           itemCount: dialog.length,
           itemBuilder: (context, index) {
-            final userId = dialog[index]['user_id'];
+            final user_id = dialog[index]['user_id'];
             final data = dialog[index]['data'];
-            final chat = data['chat'];
-            final kind = data['kind'];
-            final coordinates = data['coordinates'];
             return Align(
               alignment:
-                  userId == "AI" ? Alignment.centerRight : Alignment.centerLeft,
+                  user_id == "AI" ? Alignment.centerRight : Alignment.centerLeft,
               child: DialogBox(
-                user_id: userId,
-                chat: chat,
-                kind: kind,
-                coordinates: coordinates,
+                user_id: user_id,
+                data: data,
               ),
             );
           }),

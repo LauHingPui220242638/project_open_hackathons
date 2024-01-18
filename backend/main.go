@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var keywords = []string{"門診", "覆診", "小學"}
+var keywords = []string{"門診", "覆診", "小學", "image below"}
 
 func wordInString(word string, str string) bool {
 	return strings.Contains(str, word)

@@ -42,4 +42,13 @@ def ask(request):
           "coordinates": [22.3132469, 114.2212449, 18]
           }
         }
+    elif 'toilet' in query :
+      response_data = {
+        "user_id": "AI",
+        "data": {
+          "chat": "圖片顯示左面是男廁，右面是女廁",
+          "kind": "text",
+          "coordinates": [0, 0, 0]
+          }
+        }
     return response_data

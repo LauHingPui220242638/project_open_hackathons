@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:frontend/widgets/chatbox.dart' as chatbox;
 import 'package:frontend/env.dart' as env;
 import 'package:http/http.dart' as http;
@@ -7,7 +8,14 @@ ask(
     {required chatbox.ChatBoxState state,
     required String user_id,
     required String chat}) async {
-  state.addItemToList( user_id,{"chat":chat,"kind": "text"});
+      
+  if (chat.contains("image below")){
+    var picked = await FilePicker.platform.pickFiles(type: FileType.image);
+    if (picked == null) return;
+    state.addItemToList( user_id,{"chat":chat,"kind": "image","image":picked});
+  }else{
+    state.addItemToList( user_id,{"chat":chat,"kind": "text"});
+  }
 
   final data = callTemplate(user_id,chat);
   final response = await callPost(env.BACKEND_URL,'/ask',data);

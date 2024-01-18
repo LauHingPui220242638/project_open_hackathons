@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/env.dart';
+import 'package:frontend/widgets/dimage.dart';
 import 'package:frontend/widgets/gmap.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 class DialogBox extends StatefulWidget {
   final user_id;
-  final chat;
-  final kind;
-  final coordinates;
+  final data;
   
 
   DialogBox({
     Key? key,
     required this.user_id,
-    required this.chat,
-    required this.kind,
-    required this.coordinates ,
+    required this.data,
   }): super(key: key);
 
   _DialogBoxState createState() => _DialogBoxState();
@@ -31,9 +28,10 @@ class _DialogBoxState extends State<DialogBox> with AutomaticKeepAliveClientMixi
     
     final mWdith = MediaQuery.of(context).size.width;
     final userId = widget.user_id;
-    final chat = widget.chat;
-    final kind = widget.kind;
-    final coordinates = widget.coordinates;
+    final chat = widget.data['chat'];
+    final kind = widget.data['kind'];
+    final coordinates = widget.data['coordinates'];
+    final image = widget.data['image'];
     
     return FittedBox(
       fit: BoxFit.scaleDown,
@@ -78,6 +76,7 @@ class _DialogBoxState extends State<DialogBox> with AutomaticKeepAliveClientMixi
               ],
             ),
             kind == "map" ? GMap(coordinates: coordinates) : Container(),
+            kind == "image" ? DImage(image: image) : Container(),
           ],
         ),
       ),
