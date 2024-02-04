@@ -51,4 +51,13 @@ def ask(request):
           "coordinates": [0, 0, 0]
           }
         }
+    else:
+      response_data = {
+        "user_id": "AI",
+        "data": {
+          "chat": "對唔住，我唔明你講乜",
+          "kind": "text",
+          "coordinates": [0, 0, 0]
+          }
+        }
     return response_data
