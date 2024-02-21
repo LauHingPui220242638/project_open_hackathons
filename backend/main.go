@@ -50,7 +50,7 @@ func main() {
 		
 		UrlPath = "/ask"
 		
-		// testing for map or general
+		// routing to map by keywords
 		for _, word := range keywords {
 			if wordInString(word, askcall.Data.Chat) {
 				UrlPath = "/ask-map"
@@ -58,7 +58,10 @@ func main() {
 			}
 		}
 		
-		
+		// routing to image 
+		if anscall.Data.Kind == "image" {
+			UrlPath = "/ask-image"
+		}
 		
 		anscall, err := AskChatbot(askcall, UrlPath, api_key)
 		if err != nil {

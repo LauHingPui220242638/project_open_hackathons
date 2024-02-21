@@ -19,7 +19,7 @@ variable "zone" {
 
 variable "credentials" {
   type    = string
-  default = "../secretes/fyp-open-data-hackathon-8644213ecdba.json"
+  default = "../secretes/fyp-open-data-hackathon-ab6e5b59ab5d.json"
 }
 
 variable "list_services"{

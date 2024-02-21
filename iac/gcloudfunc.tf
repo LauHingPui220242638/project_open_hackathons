@@ -14,3 +14,12 @@ module "gcloudfunc-chatbot-map" {
 }
 
 
+module "gcloudfunc-chatbot-image" {
+    source = "./gcloudfunc"
+    name = "chatbot-image"
+    project = var.project
+    region = var.region
+}
+
+
+
