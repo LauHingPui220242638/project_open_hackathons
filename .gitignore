@@ -15,7 +15,7 @@ override.tf.json
 terraform.rc
 
 
-
+**/fyp-open-data-hackathon*.json
 **/secretes/
 **/__pycache__/
 vertexai/.streamlit
