@@ -40,9 +40,9 @@ resource "google_cloudfunctions2_function" "gcloudfunc-chatbot" {
     available_memory    = "1Gi"
     timeout_seconds     = 60
     available_cpu = "1"
-    min_instance_count = 1
+    min_instance_count = 0
     max_instance_count = 5
-    max_instance_request_concurrency = 80
+    max_instance_request_concurrency = 10
     
     service_account_email = google_service_account.gcloudfunc-chatbot-account.email
   }
