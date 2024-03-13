@@ -5,3 +5,5 @@
 3- Find '--disable-extensions'
 
 4- Add '--disable-web-security'
+
+5- Finish 
